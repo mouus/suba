@@ -139,7 +139,7 @@ function Navbar() {
                 </button>
 
                 <div className="invisible absolute left-1/2 top-full z-50 mt-3 w-48 -translate-x-1/2 rounded-2xl border border-[#e6ddd1] bg-white p-2 opacity-0 shadow-xl transition-all duration-200 group-hover:visible group-hover:opacity-100">
-                  {item.children.map((child) => (
+                  {item.children?.map((child) => (
                     <a key={child.label} href={child.href} className="block rounded-xl px-4 py-3 text-sm text-[#1f2a37] hover:bg-[#f7f2ea]">
                       {child.label}
                     </a>
@@ -193,7 +193,7 @@ function Navbar() {
                       {mobileDivingOpen && (
                         <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }} className="overflow-hidden">
                           <div className="mt-1 flex flex-col gap-1 pl-3">
-                            {item.children.map((child) => (
+                            {item.children?.map((child) => (
                               <a
                                 key={child.label}
                                 href={child.href}
