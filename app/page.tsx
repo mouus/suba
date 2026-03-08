@@ -441,7 +441,7 @@ function Navbar() {
                           className="overflow-hidden"
                         >
                           <div className="mt-1 flex flex-col gap-1 pl-3">
-                            {item.children.map((child) => (
+                            {item.children?.map((child) => (
                               <a
                                 key={child.label}
                                 href={child.href}
