@@ -212,7 +212,7 @@ const COURSESS = [
     price: "$1000+",
     duration: "2-4 weeks",
     image:
-     "people.webp",
+      "people.webp",
     text: "Professional-level training to lead certified divers and assist instructors.",
     items: [
       "Professional-level certification",
@@ -276,17 +276,17 @@ const REVIEWS = [
   },
 ];
 
-  const LINKS = [
-    { label: "Home", href: "#home" },
-    {
-      label: "Diving",
-      children: [{ label: "Courses", href: "/courses" }],
-    },
-    { label: "Our Crew", href: "/our-crew" },
-    { label: "Transfer", href: "/transfer" },
-    { label: "About Us", href: "/about" },
-    { label: "Contact", href: "/contact" },
-  ];
+const LINKS = [
+  { label: "Home", href: "#home" },
+  {
+    label: "Diving",
+    children: [{ label: "Courses", href: "/courses" }],
+  },
+  { label: "Our Crew", href: "/our-crew" },
+  { label: "Transfer", href: "/transfer" },
+  { label: "About Us", href: "/about" },
+  { label: "Contact", href: "/contact" },
+];
 
 function PolicyItem({ title, content }: { title: string; content: string }) {
 
@@ -355,15 +355,19 @@ function Navbar() {
                 </button>
 
                 <div className="invisible absolute left-1/2 top-full z-50 mt-3 w-48 -translate-x-1/2 rounded-2xl border border-[#e6ddd1] bg-white p-2 opacity-0 shadow-xl transition-all duration-200 group-hover:visible group-hover:opacity-100">
-                  {item.children.map((child) => (
-                    <a
-                      key={child.label}
-                      href={child.href}
-                      className="block rounded-xl px-4 py-3 text-sm text-[#1f2a37] hover:bg-[#f7f2ea]"
-                    >
-                      {child.label}
-                    </a>
-                  ))}
+                  {"children" in item && (
+                    <div className="invisible absolute left-1/2 top-full z-50 mt-3 w-48 -translate-x-1/2 rounded-2xl border border-[#e6ddd1] bg-white p-2 opacity-0 shadow-xl transition-all duration-200 group-hover:visible group-hover:opacity-100">
+                      {item.children?.map((child) => (
+                        <a
+                          key={child.label}
+                          href={child.href}
+                          className="block rounded-xl px-4 py-3 text-sm text-[#1f2a37] hover:bg-[#f7f2ea]"
+                        >
+                          {child.label}
+                        </a>
+                      ))}
+                    </div>
+                  )}
                 </div>
               </div>
             ) : (
@@ -423,9 +427,8 @@ function Navbar() {
                     >
                       <span>{item.label}</span>
                       <ChevronDown
-                        className={`h-4 w-4 transition-transform ${
-                          mobileDivingOpen ? "rotate-180" : ""
-                        }`}
+                        className={`h-4 w-4 transition-transform ${mobileDivingOpen ? "rotate-180" : ""
+                          }`}
                       />
                     </button>
 
@@ -667,8 +670,8 @@ export default function Page() {
                   key={course.id}
                   onClick={() => setActiveCourse(course)}
                   className={`rounded-full border px-5 py-3 text-sm font-medium transition-all duration-200 ${isActive
-                      ? "border-[#0f766e] bg-[#0f766e] text-white shadow-sm"
-                      : "border-[#d8d8d8] bg-white text-[#1f2a37] hover:border-[#0f766e] hover:text-[#0f766e]"
+                    ? "border-[#0f766e] bg-[#0f766e] text-white shadow-sm"
+                    : "border-[#d8d8d8] bg-white text-[#1f2a37] hover:border-[#0f766e] hover:text-[#0f766e]"
                     }`}
                 >
                   {course.title}
