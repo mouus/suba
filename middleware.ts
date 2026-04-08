@@ -1,6 +1,8 @@
 import { NextResponse } from 'next/server';
+// Import the type definition
+import type { NextRequest } from 'next/server';
 
-export function middleware(request) {
+export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
   const isAuthenticated = request.cookies.get('admin_session');
 
@@ -11,8 +13,7 @@ export function middleware(request) {
       return NextResponse.redirect(loginUrl);
     }
 
-    // 2. FIX: Redirect /admin to /admin/dashboard
-    // This prevents the 404 when visiting the base /admin folder
+    // 2. Redirect /admin to /admin/dashboard
     if (pathname === '/admin' || pathname === '/admin/') {
       return NextResponse.redirect(new URL('/admin/dashboard', request.url));
     }
