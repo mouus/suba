@@ -16,8 +16,12 @@ import {
   Star,
   Waves,
   X,
+  Loader2
+  
 } from "lucide-react";
 import { FaFacebookF, FaInstagram, FaTiktok } from "react-icons/fa";
+import { CheckCircle2 } from "lucide-react";
+import NavBar from "../components/NavBar";
 
 type HeroMedia = {
   type: "image" | "video";
@@ -25,8 +29,29 @@ type HeroMedia = {
 };
 
 
-const LOGO = "https://www.scubachannelfuvahmulah.com/logo.JPG";
-const PDF_URL = "https://www.scubachannelfuvahmulah.com/read.pdf";
+const PDF_URL = "/read.pdf";
+const LOGO = "/logo.JPG";
+
+const LINKS = [
+  { label: "Home", href: "/" },
+  {
+    label: "Diving",
+    children: [{ label: "Courses", href: "/courses" }],
+  },
+  {
+    label: "Stay",
+    href: "#hotels", // or "/hotels"
+    children: [
+      // { label: "Luxury Villas", href: "/hotels/villas" },
+      { label: "Guest Houses", href: "/hotels/guest-houses" },
+      // { label: "Resorts", href: "/hotels/resorts" },
+    ],
+  },
+  { label: "Our Crew", href: "/our-crew" },
+  { label: "Transfer", href: "/transfer" },
+  { label: "About Us", href: "/about" },
+  { label: "Contact", href: "/contact" },
+];
 const COURSES = [
   {
     id: "open-water",
@@ -104,12 +129,12 @@ const HERO_MEDIA: HeroMedia[] = [
   { type: "video", src: "/dolphin-show.MOV" },
   {
     type: "image",
-    src: "https://www.scubachannelfuvahmulah.com/fvm-pic.jpg",
+    src: "/fvm-pic.jpg",
   },
   { type: "video", src: "/img77.mp4" },
   {
     type: "image",
-    src: "https://www.scubachannelfuvahmulah.com/fvm-3.JPG",
+    src: "/fvm-3.JPG",
   },
 ];
 const IMAGES = [
@@ -121,12 +146,15 @@ const IMAGES = [
 ];
 
 const GALLERY_IMAGES = [
+  "/airport.jpg",
+  "/diving1.JPG",
+  "fishshark.JPEG",
   "/fvm-3.JPG",
   "/whale.webp",
   "/loneshark.webp",
   "/img1.webp",
   "/dive-guide.webp",
-  "/manta2.webp",
+  "/finshark.JPEG",
 ];
 
 const EXPERIENCES = [
@@ -276,17 +304,7 @@ const REVIEWS = [
   },
 ];
 
-const LINKS = [
-  { label: "Home", href: "#home" },
-  {
-    label: "Diving",
-    children: [{ label: "Courses", href: "/courses" }],
-  },
-  { label: "Our Crew", href: "/our-crew" },
-  { label: "Transfer", href: "/transfer" },
-  { label: "About Us", href: "/about" },
-  { label: "Contact", href: "/contact" },
-];
+
 
 function PolicyItem({ title, content }: { title: string; content: string }) {
 
@@ -320,180 +338,42 @@ function PolicyItem({ title, content }: { title: string; content: string }) {
   );
 }
 
-function Navbar() {
-  const [open, setOpen] = useState(false);
-  const [mobileDivingOpen, setMobileDivingOpen] = useState(false);
-
-
-
-  return (
-    <nav className="fixed inset-x-0 top-0 z-50 px-4 py-4">
-      <div className="mx-auto flex max-w-7xl items-center justify-between rounded-full border border-white/20 bg-black/20 px-5 py-3 backdrop-blur-md">
-        <a href="#home" className="flex items-center gap-3">
-          <img
-            src={LOGO}
-            alt="Scubachannel logo"
-            className="h-10 w-10 rounded-full object-cover"
-          />
-          <div className="hidden sm:block">
-            <p className="text-sm font-semibold tracking-[0.2em] text-white">
-              SCUBACHANNEL
-            </p>
-            <p className="text-[10px] tracking-[0.28em] text-white/60">
-              FUVAHMULAH
-            </p>
-          </div>
-        </a>
-
-        <div className="hidden items-center gap-8 lg:flex">
-          {LINKS.map((item) =>
-            item.children ? (
-              <div key={item.label} className="group relative">
-                <button className="flex items-center gap-1 text-sm text-white/85 transition hover:text-white">
-                  {item.label}
-                  <ChevronDown className="h-4 w-4" />
-                </button>
-
-                <div className="invisible absolute left-1/2 top-full z-50 mt-3 w-48 -translate-x-1/2 rounded-2xl border border-[#e6ddd1] bg-white p-2 opacity-0 shadow-xl transition-all duration-200 group-hover:visible group-hover:opacity-100">
-                  {"children" in item && (
-                    <div className="invisible absolute left-1/2 top-full z-50 mt-3 w-48 -translate-x-1/2 rounded-2xl border border-[#e6ddd1] bg-white p-2 opacity-0 shadow-xl transition-all duration-200 group-hover:visible group-hover:opacity-100">
-                      {item.children?.map((child) => (
-                        <a
-                          key={child.label}
-                          href={child.href}
-                          className="block rounded-xl px-4 py-3 text-sm text-[#1f2a37] hover:bg-[#f7f2ea]"
-                        >
-                          {child.label}
-                        </a>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              </div>
-            ) : (
-              <a
-                key={item.label}
-                href={item.href}
-                className="text-sm text-white/85 transition hover:text-white"
-              >
-                {item.label}
-              </a>
-            )
-          )}
-
-          <div className="flex items-center gap-4 text-white">
-            <a href="#" className="transition hover:text-[#0f766e]" aria-label="Facebook">
-              <FaFacebookF className="h-4 w-4" />
-            </a>
-            <a href="#" className="transition hover:text-[#0f766e]" aria-label="Instagram">
-              <FaInstagram className="h-4 w-4" />
-            </a>
-            <a href="#" className="transition hover:text-[#0f766e]" aria-label="TikTok">
-              <FaTiktok className="h-4 w-4" />
-            </a>
-          </div>
-        </div>
-
-        <a
-          href="#contact"
-          className="hidden rounded-full bg-white px-5 py-2 text-sm font-medium text-[#1f2a37] lg:block"
-        >
-          Book Now
-        </a>
-
-        <button
-          onClick={() => setOpen((prev) => !prev)}
-          className="text-white lg:hidden"
-        >
-          {open ? <X /> : <Menu />}
-        </button>
-      </div>
-
-      <AnimatePresence>
-        {open && (
-          <motion.div
-            initial={{ opacity: 0, y: -8 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -8 }}
-            className="mx-auto mt-3 max-w-7xl rounded-[2rem] bg-white p-4 shadow-xl lg:hidden"
-          >
-            <div className="flex flex-col gap-2">
-              {LINKS.map((item) =>
-                item.children ? (
-                  <div key={item.label}>
-                    <button
-                      onClick={() => setMobileDivingOpen((prev) => !prev)}
-                      className="flex w-full items-center justify-between rounded-2xl px-4 py-3 text-sm text-[#1f2a37] hover:bg-[#f7f2ea]"
-                    >
-                      <span>{item.label}</span>
-                      <ChevronDown
-                        className={`h-4 w-4 transition-transform ${mobileDivingOpen ? "rotate-180" : ""
-                          }`}
-                      />
-                    </button>
-
-                    <AnimatePresence>
-                      {mobileDivingOpen && (
-                        <motion.div
-                          initial={{ height: 0, opacity: 0 }}
-                          animate={{ height: "auto", opacity: 1 }}
-                          exit={{ height: 0, opacity: 0 }}
-                          className="overflow-hidden"
-                        >
-                          <div className="mt-1 flex flex-col gap-1 pl-3">
-                            {item.children?.map((child) => (
-                              <a
-                                key={child.label}
-                                href={child.href}
-                                onClick={() => {
-                                  setOpen(false);
-                                  setMobileDivingOpen(false);
-                                }}
-                                className="rounded-2xl px-4 py-3 text-sm text-[#1f2a37] hover:bg-[#f7f2ea]"
-                              >
-                                {child.label}
-                              </a>
-                            ))}
-                          </div>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
-                  </div>
-                ) : (
-                  <a
-                    key={item.label}
-                    href={item.href}
-                    onClick={() => setOpen(false)}
-                    className="rounded-2xl px-4 py-3 text-sm text-[#1f2a37] hover:bg-[#f7f2ea]"
-                  >
-                    {item.label}
-                  </a>
-                )
-              )}
-
-              <div className="mt-3 flex items-center gap-5 px-4 py-3 text-[#1f2a37]">
-                <a href="#" aria-label="Facebook">
-                  <FaFacebookF className="h-4 w-4" />
-                </a>
-                <a href="#" aria-label="Instagram">
-                  <FaInstagram className="h-4 w-4" />
-                </a>
-                <a href="#" aria-label="TikTok">
-                  <FaTiktok className="h-4 w-4" />
-                </a>
-              </div>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </nav>
-  );
-}
 
 export default function Page() {
   const [activeCourse, setActiveCourse] = useState(COURSESS[0]);
   const [heroIndex, setHeroIndex] = useState(0);
   const activeHero = HERO_MEDIA[heroIndex];
+  const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setStatus("submitting");
+
+    const formData = new FormData(e.currentTarget);
+    const data = {
+      name: formData.get("name"),
+      email: formData.get("email"),
+      subject: formData.get("subject"),
+      message: formData.get("message"),
+    };
+
+    
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        body: JSON.stringify(data),
+      });
+
+      if (res.ok) {
+        setStatus("success");
+        (e.target as HTMLFormElement).reset();
+      } else {
+        setStatus("error");
+      }
+    } catch (err) {
+      setStatus("error");
+    }
+  }
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -505,7 +385,7 @@ export default function Page() {
 
   return (
     <div className="bg-[#f6f1e8] text-[#1f2a37]">
-      <Navbar />
+      <NavBar />
 
       <section id="home" className="relative min-h-screen pb-2 overflow-hidden">
         <AnimatePresence mode="wait">
@@ -832,7 +712,7 @@ export default function Page() {
 
               <div className="mt-8 flex flex-wrap gap-4">
                 <a
-                  href={PDF_URL}
+                  href={"/read.pdf"}
                   target="_blank"
                   rel="noreferrer"
                   className="inline-flex items-center gap-3 rounded-full bg-[#0f766e] px-6 py-3 text-sm font-medium text-white"
@@ -926,50 +806,100 @@ export default function Page() {
                 </div>
               </div>
 
-              <a
+              {/* <a
                 href="https://www.instagram.com/"
                 target="_blank"
                 rel="noreferrer"
                 className="mt-8 inline-flex h-12 w-12 items-center justify-center rounded-full border border-white/20"
               >
                 <Instagram className="h-5 w-5" />
-              </a>
+              </a> */}
             </div>
 
-            <form className="rounded-[2.5rem] bg-white p-8 text-[#1f2a37]">
-              <h3 className="text-2xl font-medium">Send a message</h3>
+         <form onSubmit={handleSubmit} className="rounded-[2.5rem] bg-white p-8 text-[#1f2a37] shadow-sm border border-[#e6ddd1]">
+      <h3 className="text-2xl font-medium">Send a message</h3>
 
-              <div className="mt-6 space-y-4">
-                <input
-                  type="text"
-                  placeholder="Name"
-                  className="w-full rounded-full border border-[#e6ddd1] bg-[#fcfaf6] px-5 py-4 text-sm outline-none"
-                />
-                <input
-                  type="email"
-                  placeholder="Email"
-                  className="w-full rounded-full border border-[#e6ddd1] bg-[#fcfaf6] px-5 py-4 text-sm outline-none"
-                />
-                <input
-                  type="text"
-                  placeholder="Subject"
-                  className="w-full rounded-full border border-[#e6ddd1] bg-[#fcfaf6] px-5 py-4 text-sm outline-none"
-                />
-                <textarea
-                  rows={6}
-                  placeholder="Message"
-                  className="w-full rounded-[1.5rem] border border-[#e6ddd1] bg-[#fcfaf6] px-5 py-4 text-sm outline-none"
-                />
-                <button
-                  type="submit"
-                  className="inline-flex items-center gap-2 rounded-full bg-[#0f766e] px-6 py-3 text-sm font-medium text-white"
-                >
-                  Send Message <ArrowRight className="h-4 w-4" />
-                </button>
-              </div>
-            </form>
+      {status === "success" ? (
+        <div className="mt-6 flex flex-col items-center justify-center py-10 text-center">
+          <CheckCircle2 className="h-12 w-12 text-[#0f766e] mb-4" />
+          <p className="font-medium">Message sent successfully!</p>
+          <p className="text-sm text-slate-500 mt-1">We'll get back to you soon.</p>
+          <button 
+            type="button" 
+            onClick={() => setStatus("idle")}
+            className="mt-6 text-sm font-semibold text-[#0f766e] underline"
+          >
+            Send another message
+          </button>
+        </div>
+      ) : (
+        <div className="mt-6 space-y-4">
+          <input
+            name="name"
+            type="text"
+            required
+            placeholder="Name"
+            className="w-full rounded-full border border-[#e6ddd1] bg-[#fcfaf6] px-5 py-4 text-sm outline-none focus:border-[#0f766e] transition-colors"
+          />
+          <input
+            name="email"
+            type="email"
+            required
+            placeholder="Email"
+            className="w-full rounded-full border border-[#e6ddd1] bg-[#fcfaf6] px-5 py-4 text-sm outline-none focus:border-[#0f766e] transition-colors"
+          />
+          <input
+            name="subject"
+            type="text"
+            placeholder="Subject"
+            className="w-full rounded-full border border-[#e6ddd1] bg-[#fcfaf6] px-5 py-4 text-sm outline-none focus:border-[#0f766e] transition-colors"
+          />
+          <textarea
+            name="message"
+            rows={6}
+            required
+            placeholder="Message"
+            className="w-full rounded-[1.5rem] border border-[#e6ddd1] bg-[#fcfaf6] px-5 py-4 text-sm outline-none focus:border-[#0f766e] transition-colors resize-none"
+          />
+          
+          {status === "error" && (
+            <p className="text-xs text-red-500 font-medium px-2">Something went wrong. Please try again.</p>
+          )}
+
+          <button
+            type="submit"
+            disabled={status === "submitting"}
+            className="inline-flex items-center gap-2 rounded-full bg-[#0f766e] px-8 py-3 text-sm font-medium text-white transition hover:opacity-90 disabled:opacity-50"
+          >
+            {status === "submitting" ? (
+              <>Sending <Loader2 className="h-4 w-4 animate-spin" /></>
+            ) : (
+              <>Send Message <ArrowRight className="h-4 w-4" /></>
+            )}
+          </button>
+        </div>
+      )}
+    </form>
           </div>
         </div>
+
+        <a
+  href="https://wa.me/9607930760?text=Hello%20Scubachannel%20Fuvahmulah,%20I%20would%20like%20to%20enquire%20about%20diving."
+  target="_blank"
+  rel="noreferrer"
+  className="fixed bottom-6 right-6 z-50 flex items-center gap-3 rounded-full bg-[#0f766e] px-5 py-3 text-white shadow-lg hover:scale-105 transition-all"
+>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    className="h-5 w-5"
+    fill="currentColor"
+    viewBox="0 0 24 24"
+  >
+    <path d="M20.52 3.48A11.79 11.79 0 0012.02 0C5.38 0 .01 5.37 0 12c0 2.11.55 4.16 1.6 5.97L0 24l6.19-1.62A11.93 11.93 0 0012.02 24C18.66 24 24 18.63 24 12c0-3.2-1.25-6.2-3.48-8.52zM12.02 21.82c-1.82 0-3.6-.49-5.15-1.42l-.37-.22-3.67.96.98-3.57-.24-.37A9.77 9.77 0 012.2 12c0-5.43 4.41-9.82 9.82-9.82 2.62 0 5.08 1.02 6.94 2.88A9.75 9.75 0 0121.82 12c0 5.41-4.39 9.82-9.8 9.82zm5.39-7.38c-.3-.15-1.78-.88-2.06-.98-.27-.1-.47-.15-.67.15-.2.3-.77.98-.94 1.18-.17.2-.35.22-.65.07-.3-.15-1.28-.47-2.43-1.5-.9-.8-1.5-1.78-1.67-2.08-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.57-.48-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.05 1.02-1.05 2.5 0 1.47 1.08 2.9 1.23 3.1.15.2 2.13 3.25 5.17 4.56.72.31 1.28.5 1.72.64.72.23 1.37.2 1.88.12.57-.08 1.78-.73 2.03-1.44.25-.7.25-1.3.17-1.44-.07-.13-.27-.2-.57-.35z" />
+  </svg>
+
+  <span className="text-sm font-medium">Chat</span>
+</a>
       </section>
 
       <footer className="bg-[#16202b] px-6 py-10 text-white/55">
@@ -1036,7 +966,7 @@ export default function Page() {
         </div>
 
         <div className="mx-auto mt-10 max-w-7xl border-t border-white/10 pt-6 text-sm text-white/40">
-          © 2025 Southern Channel Pvt Ltd. All rights reserved.
+          © 2026 Southern Channel Pvt Ltd. All rights reserved.
         </div>
       </footer>
     </div>

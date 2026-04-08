@@ -25,16 +25,26 @@ const LOGO = "https://www.scubachannelfuvahmulah.com/logo.JPG";
 const PDF_URL = "https://www.scubachannelfuvahmulah.com/read.pdf";
 
 const LINKS = [
-  { label: "Home", href: "/#home" },
+  { label: "Home", href: "/" },
   {
     label: "Diving",
     children: [{ label: "Courses", href: "/courses" }],
+  },
+  {
+    label: "Stay",
+    href: "#hotels", // or "/hotels"
+    children: [
+      // { label: "Luxury Villas", href: "/hotels/villas" },
+      { label: "Guest Houses", href: "/hotels/guest-houses" },
+      // { label: "Resorts", href: "/hotels/resorts" },
+    ],
   },
   { label: "Our Crew", href: "/our-crew" },
   { label: "Transfer", href: "/transfer" },
   { label: "About Us", href: "/about" },
   { label: "Contact", href: "/contact" },
 ];
+
 
 type Course = {
   id: string;
@@ -973,6 +983,23 @@ export default function CoursesPage() {
             </form>
           </div>
         </div>
+        <a
+  href="https://wa.me/9607930760?text=Hello%20Scubachannel%20Fuvahmulah,%20I%20would%20like%20to%20enquire%20about%20diving."
+  target="_blank"
+  rel="noreferrer"
+  className="fixed bottom-6 right-6 z-50 flex items-center gap-3 rounded-full bg-[#0f766e] px-5 py-3 text-white shadow-lg hover:scale-105 transition-all"
+>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    className="h-5 w-5"
+    fill="currentColor"
+    viewBox="0 0 24 24"
+  >
+    <path d="M20.52 3.48A11.79 11.79 0 0012.02 0C5.38 0 .01 5.37 0 12c0 2.11.55 4.16 1.6 5.97L0 24l6.19-1.62A11.93 11.93 0 0012.02 24C18.66 24 24 18.63 24 12c0-3.2-1.25-6.2-3.48-8.52zM12.02 21.82c-1.82 0-3.6-.49-5.15-1.42l-.37-.22-3.67.96.98-3.57-.24-.37A9.77 9.77 0 012.2 12c0-5.43 4.41-9.82 9.82-9.82 2.62 0 5.08 1.02 6.94 2.88A9.75 9.75 0 0121.82 12c0 5.41-4.39 9.82-9.8 9.82zm5.39-7.38c-.3-.15-1.78-.88-2.06-.98-.27-.1-.47-.15-.67.15-.2.3-.77.98-.94 1.18-.17.2-.35.22-.65.07-.3-.15-1.28-.47-2.43-1.5-.9-.8-1.5-1.78-1.67-2.08-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.57-.48-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.05 1.02-1.05 2.5 0 1.47 1.08 2.9 1.23 3.1.15.2 2.13 3.25 5.17 4.56.72.31 1.28.5 1.72.64.72.23 1.37.2 1.88.12.57-.08 1.78-.73 2.03-1.44.25-.7.25-1.3.17-1.44-.07-.13-.27-.2-.57-.35z" />
+  </svg>
+
+  <span className="text-sm font-medium">Chat</span>
+</a>
       </section>
 
       <footer className="bg-[#16202b] px-6 py-10 text-white/55">
@@ -1024,7 +1051,7 @@ export default function CoursesPage() {
         </div>
 
         <div className="mx-auto mt-10 max-w-7xl border-t border-white/10 pt-6 text-sm text-white/40">
-          © 2025 Southern Channel Pvt Ltd. All rights reserved.
+          © 2026 Southern Channel Pvt Ltd. All rights reserved.
         </div>
       </footer>
     </div>

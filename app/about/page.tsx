@@ -16,19 +16,26 @@ import {
   Star,
   Waves,
   X,
-  CalendarDays,
   Camera,
   Trophy,
 } from "lucide-react";
 import { FaFacebookF, FaInstagram, FaTiktok } from "react-icons/fa";
+import NavBar from "@/components/NavBar";
 
-const LOGO = "https://www.scubachannelfuvahmulah.com/logo.JPG";
+const LOGO = "/logo.JPG";
 
 const LINKS = [
-  { label: "Home", href: "/#home" },
+  { label: "Home", href: "#home" },
   {
     label: "Diving",
     children: [{ label: "Courses", href: "/courses" }],
+  },
+  {
+    label: "Stay",
+    href: "#hotels",
+    children: [
+      { label: "Guest Houses", href: "/hotels/guest-houses" },
+    ],
   },
   { label: "Our Crew", href: "/our-crew" },
   { label: "Transfer", href: "/transfer" },
@@ -65,32 +72,44 @@ const TIMELINE = [
     year: "2011",
     title: "First Dive Experience",
     text: "Mr. Zafar had his first scuba diving experience in Fuvahmulah at a time when equipment was scarce and there were no dive centers on the island.",
-    image: "https://www.scubachannelfuvahmulah.com/fvm-3.JPG",
+    image: "/img-7.webp",
   },
   {
     year: "2012",
     title: "Tiger Shark Discovery",
     text: "Tiger sharks were identified near the harbor area, marking a pivotal moment in the growth of diving in the region.",
-    image: "https://www.scubachannelfuvahmulah.com/fvm-pic.jpg",
+    image: "/img-3.webp",
   },
   {
     year: "2014 - 2015",
     title: "Growth Period",
     text: "Local entrepreneurs began investing in the diving sector, with new guest houses and dive activity expanding around the island.",
-    image: "https://www.scubachannelfuvahmulah.com/fvm-3.JPG",
+    image: "/img-2.webp",
   },
   {
     year: "2019",
     title: "First Guided Dives",
     text: "Guided tiger shark dives became a stronger tourism offering, helping establish the foundation of the island's shark diving reputation.",
-    image: "https://www.scubachannelfuvahmulah.com/fvm-pic.jpg",
+    image: "/img.webp",
   },
   {
     year: "Present",
     title: "World-Class Destination",
     text: "Fuvahmulah is presented as the world's number one tiger shark destination, with a growing hospitality and dive infrastructure.",
-    image: "https://www.scubachannelfuvahmulah.com/fvm-3.JPG",
+    image: "/fvm-3.JPG",
   },
+];
+
+// Corrected Image Array
+const images = [
+  "/fvm-3.JPG",
+  "/fvm-pic.jpg",
+  "/img-2.webp",
+  "/img-3.webp",
+  "/img-5.webp",
+  "/img-7.webp",
+  "/img-8.webp",
+  "/img-9.webp",
 ];
 
 const VISUAL_JOURNEY = [
@@ -114,123 +133,6 @@ const JOURNEY_QUOTES = [
   "Today, the page presents Fuvahmulah as a globally recognized tiger shark destination built through persistence, experimentation, and local belief.",
 ];
 
-function Navbar() {
-  const [open, setOpen] = useState(false);
-  const [mobileDivingOpen, setMobileDivingOpen] = useState(false);
-
-  return (
-    <nav className="fixed inset-x-0 top-0 z-50 px-4 py-4">
-      <div className="mx-auto flex max-w-7xl items-center justify-between rounded-full border border-white/20 bg-black/20 px-5 py-3 backdrop-blur-md">
-        <a href="/#home" className="flex items-center gap-3">
-          <img src={LOGO} alt="Scubachannel logo" className="h-10 w-10 rounded-full object-cover" />
-          <div className="hidden sm:block">
-            <p className="text-sm font-semibold tracking-[0.2em] text-white">SCUBACHANNEL</p>
-            <p className="text-[10px] tracking-[0.28em] text-white/60">FUVAHMULAH</p>
-          </div>
-        </a>
-
-        <div className="hidden items-center gap-8 lg:flex">
-          {LINKS.map((item) =>
-            "children" in item ? (
-              <div key={item.label} className="group relative">
-                <button className="flex items-center gap-1 text-sm text-white/85 transition hover:text-white">
-                  {item.label}
-                  <ChevronDown className="h-4 w-4" />
-                </button>
-
-                <div className="invisible absolute left-1/2 top-full z-50 mt-3 w-48 -translate-x-1/2 rounded-2xl border border-[#e6ddd1] bg-white p-2 opacity-0 shadow-xl transition-all duration-200 group-hover:visible group-hover:opacity-100">
-                  {item.children?.map((child) => (
-                    <a key={child.label} href={child.href} className="block rounded-xl px-4 py-3 text-sm text-[#1f2a37] hover:bg-[#f7f2ea]">
-                      {child.label}
-                    </a>
-                  ))}
-                </div>
-              </div>
-            ) : (
-              <a key={item.label} href={item.href} className="text-sm text-white/85 transition hover:text-white">
-                {item.label}
-              </a>
-            )
-          )}
-
-          <div className="flex items-center gap-4 text-white">
-            <a href="#" className="transition hover:text-[#0f766e]" aria-label="Facebook"><FaFacebookF className="h-4 w-4" /></a>
-            <a href="#" className="transition hover:text-[#0f766e]" aria-label="Instagram"><FaInstagram className="h-4 w-4" /></a>
-            <a href="#" className="transition hover:text-[#0f766e]" aria-label="TikTok"><FaTiktok className="h-4 w-4" /></a>
-          </div>
-        </div>
-
-        <a href="#story" className="hidden rounded-full bg-white px-5 py-2 text-sm font-medium text-[#1f2a37] lg:block">
-          Explore Story
-        </a>
-
-        <button onClick={() => setOpen((prev) => !prev)} className="text-white lg:hidden">
-          {open ? <X /> : <Menu />}
-        </button>
-      </div>
-
-      <AnimatePresence>
-        {open && (
-          <motion.div
-            initial={{ opacity: 0, y: -8 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -8 }}
-            className="mx-auto mt-3 max-w-7xl rounded-[2rem] bg-white p-4 shadow-xl lg:hidden"
-          >
-            <div className="flex flex-col gap-2">
-              {LINKS.map((item) =>
-                "children" in item ? (
-                  <div key={item.label}>
-                    <button
-                      onClick={() => setMobileDivingOpen((prev) => !prev)}
-                      className="flex w-full items-center justify-between rounded-2xl px-4 py-3 text-sm text-[#1f2a37] hover:bg-[#f7f2ea]"
-                    >
-                      <span>{item.label}</span>
-                      <ChevronDown className={`h-4 w-4 transition-transform ${mobileDivingOpen ? "rotate-180" : ""}`} />
-                    </button>
-
-                    <AnimatePresence>
-                      {mobileDivingOpen && (
-                        <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }} className="overflow-hidden">
-                          <div className="mt-1 flex flex-col gap-1 pl-3">
-                            {item.children?.map((child) => (
-                              <a
-                                key={child.label}
-                                href={child.href}
-                                onClick={() => {
-                                  setOpen(false);
-                                  setMobileDivingOpen(false);
-                                }}
-                                className="rounded-2xl px-4 py-3 text-sm text-[#1f2a37] hover:bg-[#f7f2ea]"
-                              >
-                                {child.label}
-                              </a>
-                            ))}
-                          </div>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
-                  </div>
-                ) : (
-                  <a key={item.label} href={item.href} onClick={() => setOpen(false)} className="rounded-2xl px-4 py-3 text-sm text-[#1f2a37] hover:bg-[#f7f2ea]">
-                    {item.label}
-                  </a>
-                )
-              )}
-
-              <div className="mt-3 flex items-center gap-5 px-4 py-3 text-[#1f2a37]">
-                <a href="#" aria-label="Facebook"><FaFacebookF className="h-4 w-4" /></a>
-                <a href="#" aria-label="Instagram"><FaInstagram className="h-4 w-4" /></a>
-                <a href="#" aria-label="TikTok"><FaTiktok className="h-4 w-4" /></a>
-              </div>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </nav>
-  );
-}
-
 function TimelineCard({ year, title, text, image }: { year: string; title: string; text: string; image: string }) {
   return (
     <div className="overflow-hidden rounded-[2rem] bg-white shadow-sm">
@@ -252,12 +154,13 @@ function TimelineCard({ year, title, text, image }: { year: string; title: strin
 export default function AboutPage() {
   return (
     <div className="bg-[#f6f1e8] text-[#1f2a37]">
-      <Navbar />
+      <NavBar />
 
+      {/* Hero Section */}
       <section className="relative min-h-[88vh] overflow-hidden pb-12 pt-32 md:pt-40">
         <div
           className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: "url(https://www.scubachannelfuvahmulah.com/fvm-pic.jpg)" }}
+          style={{ backgroundImage: "url(/fvm-pic.jpg)" }}
         />
         <div className="absolute inset-0 bg-black/45" />
         <div className="absolute inset-0 bg-gradient-to-b from-black/25 via-black/40 to-black/65" />
@@ -270,7 +173,7 @@ export default function AboutPage() {
               <span className="block font-semibold">how a local vision shaped a world-class dive destination</span>
             </h1>
             <p className="mt-6 max-w-2xl text-lg leading-8 text-white/80">
-              A premium about page that keeps the heart of the live story while matching the elevated, resort-inspired design language used across your other pages.
+              Scubachannel Fuvahmulah is built on persistence, experimentation, and local belief.
             </p>
 
             <div className="mt-10 flex flex-wrap gap-4">
@@ -285,6 +188,7 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* Intro Story */}
       <section id="story" className="mx-auto max-w-7xl px-6 py-24">
         <div className="grid gap-12 lg:grid-cols-[1fr_1.05fr] lg:items-center">
           <div>
@@ -294,9 +198,8 @@ export default function AboutPage() {
               <span className="block font-semibold">Fuvahmulah’s tiger shark legacy</span>
             </h2>
           </div>
-
           <p className="text-base leading-8 text-[#667085]">
-            The live about page focuses on the origin story of tiger shark diving in Fuvahmulah, centered around the persistence, experimentation, and long-term vision of Mr. Abdulla Zafar Ali. This redesign keeps that narrative but presents it with a calmer, more premium tone and stronger visual hierarchy.
+            The origin story of tiger shark diving in Fuvahmulah is centered around the persistence and long-term vision of Mr. Abdulla Zafar Ali.
           </p>
         </div>
 
@@ -316,50 +219,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="bg-[#fcfaf6] py-24">
-        <div className="mx-auto max-w-7xl px-6">
-          <div className="grid gap-8 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
-            <div className="overflow-hidden rounded-[2.5rem] bg-white shadow-sm">
-              <div className="relative h-full min-h-[520px] overflow-hidden">
-                <img
-                  src="https://www.scubachannelfuvahmulah.com/zafar.jpg"
-                  alt="Mr. Abdulla Zafar Ali"
-                  className="h-full w-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#1f2a37]/70 via-transparent to-transparent" />
-                <div className="absolute bottom-0 left-0 right-0 p-8 text-white">
-                  <p className="text-xs uppercase tracking-[0.22em] text-white/75">The Pioneer</p>
-                  <h3 className="mt-2 text-3xl font-medium">Mr. Abdulla Zafar Ali</h3>
-                  <p className="mt-2 text-sm text-white/85">Founder, Scubachannel Fuvahmulah</p>
-                </div>
-              </div>
-            </div>
-
-            <div className="rounded-[2.5rem] bg-white p-10 shadow-sm md:p-12">
-              <p className="text-sm uppercase tracking-[0.25em] text-[#0f766e]">The Pioneer</p>
-              <h2 className="mt-4 text-4xl font-light md:text-5xl">
-                A local pioneer with
-                <span className="block font-semibold">a long-term vision for the island</span>
-              </h2>
-              <p className="mt-6 text-base leading-8 text-[#667085]">
-                The live page describes Mr. Abdulla Zafar Ali as one of the key pioneers behind the emergence of tiger shark diving in Fuvahmulah. It presents him not only as a dive instructor, but as someone deeply invested in the development and future of the field on the island.
-              </p>
-
-              <div className="mt-8 space-y-4">
-                {PIONEER_HIGHLIGHTS.map((item) => (
-                  <div key={item} className="flex items-start gap-3">
-                    <div className="mt-0.5 flex h-6 w-6 items-center justify-center rounded-full bg-[#e8f5f2]">
-                      <BadgeCheck className="h-4 w-4 text-[#0f766e]" />
-                    </div>
-                    <p className="text-sm leading-7 text-[#667085]">{item}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
+      {/* Visual Journey Section - FIXED Loop and Images */}
       <section className="py-24">
         <div className="mx-auto max-w-7xl px-6">
           <div className="mb-12 flex items-end justify-between gap-6">
@@ -374,7 +234,7 @@ export default function AboutPage() {
               <div key={`${item.year}-${item.label}`} className="overflow-hidden rounded-[2rem] bg-white shadow-sm">
                 <div className="relative h-56 overflow-hidden">
                   <img
-                    src={index % 2 === 0 ? "https://www.scubachannelfuvahmulah.com/fvm-3.JPG" : "https://www.scubachannelfuvahmulah.com/fvm-pic.jpg"}
+                    src={images[index % images.length]}
                     alt={item.label}
                     className="h-full w-full object-cover"
                   />
@@ -393,6 +253,7 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* Timeline Section */}
       <section id="journey" className="bg-[#fcfaf6] py-24">
         <div className="mx-auto max-w-7xl px-6">
           <div className="text-center">
@@ -402,171 +263,32 @@ export default function AboutPage() {
               <span className="block font-semibold">to a globally recognized destination</span>
             </h2>
           </div>
-
           <div className="mt-12 grid gap-6 xl:grid-cols-3">
             {TIMELINE.map((item) => (
               <TimelineCard key={`${item.year}-${item.title}`} {...item} />
             ))}
           </div>
         </div>
+        <a
+  href="https://wa.me/9607930760?text=Hello%20Scubachannel%20Fuvahmulah,%20I%20would%20like%20to%20enquire%20about%20diving."
+  target="_blank"
+  rel="noreferrer"
+  className="fixed bottom-6 right-6 z-50 flex items-center gap-3 rounded-full bg-[#0f766e] px-5 py-3 text-white shadow-lg hover:scale-105 transition-all"
+>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    className="h-5 w-5"
+    fill="currentColor"
+    viewBox="0 0 24 24"
+  >
+    <path d="M20.52 3.48A11.79 11.79 0 0012.02 0C5.38 0 .01 5.37 0 12c0 2.11.55 4.16 1.6 5.97L0 24l6.19-1.62A11.93 11.93 0 0012.02 24C18.66 24 24 18.63 24 12c0-3.2-1.25-6.2-3.48-8.52zM12.02 21.82c-1.82 0-3.6-.49-5.15-1.42l-.37-.22-3.67.96.98-3.57-.24-.37A9.77 9.77 0 012.2 12c0-5.43 4.41-9.82 9.82-9.82 2.62 0 5.08 1.02 6.94 2.88A9.75 9.75 0 0121.82 12c0 5.41-4.39 9.82-9.8 9.82zm5.39-7.38c-.3-.15-1.78-.88-2.06-.98-.27-.1-.47-.15-.67.15-.2.3-.77.98-.94 1.18-.17.2-.35.22-.65.07-.3-.15-1.28-.47-2.43-1.5-.9-.8-1.5-1.78-1.67-2.08-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.57-.48-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.05 1.02-1.05 2.5 0 1.47 1.08 2.9 1.23 3.1.15.2 2.13 3.25 5.17 4.56.72.31 1.28.5 1.72.64.72.23 1.37.2 1.88.12.57-.08 1.78-.73 2.03-1.44.25-.7.25-1.3.17-1.44-.07-.13-.27-.2-.57-.35z" />
+  </svg>
+
+  <span className="text-sm font-medium">Chat</span>
+</a>
       </section>
 
-      <section className="py-24">
-        <div className="mx-auto max-w-7xl px-6">
-          <div className="grid gap-8 lg:grid-cols-[1fr_0.95fr]">
-            <div className="rounded-[2.5rem] bg-white p-10 shadow-sm md:p-12">
-              <p className="text-sm uppercase tracking-[0.25em] text-[#0f766e]">The Journey</p>
-              <h2 className="mt-4 text-4xl font-light md:text-5xl">
-                A story built on
-                <span className="block font-semibold">belief, persistence, and local knowledge</span>
-              </h2>
-              <p className="mt-6 max-w-2xl text-base leading-8 text-[#667085]">
-                The live page includes a first-person-style narrative about how recreational diving slowly took shape in Fuvahmulah, even when the island had limited equipment and little outside belief in the possibility of tiger shark diving becoming a serious attraction.
-              </p>
-
-              <div className="mt-8 space-y-4">
-                {JOURNEY_QUOTES.map((item) => (
-                  <div key={item} className="rounded-[1.5rem] bg-[#fcfaf6] p-5 text-sm leading-8 text-[#667085]">
-                    {item}
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="rounded-[2.5rem] bg-[#1f2a37] p-10 text-white shadow-sm md:p-12">
-              <p className="text-sm uppercase tracking-[0.25em] text-white/60">Fuvahmulah Today</p>
-              <h2 className="mt-4 text-4xl font-light md:text-5xl">
-                The island now stands as
-                <span className="block font-semibold">a shark diving icon</span>
-              </h2>
-              <p className="mt-6 text-base leading-8 text-white/72">
-                The current about page presents Fuvahmulah as the world's number one tiger shark destination, supported by a growing hospitality base and a stronger diving ecosystem than in its early years.
-              </p>
-
-              <div className="mt-8 grid gap-4 sm:grid-cols-3">
-                {STATS.map((item) => (
-                  <div key={item.label} className="rounded-2xl border border-white/10 bg-white/5 p-5 text-center">
-                    <p className="text-3xl font-semibold text-white">{item.value}</p>
-                    <p className="mt-2 text-xs uppercase tracking-[0.18em] text-white/60">{item.label}</p>
-                  </div>
-                ))}
-              </div>
-
-              <div className="mt-8 grid gap-3">
-                {[
-                  { icon: Compass, text: "Locally rooted diving heritage" },
-                  { icon: Star, text: "Globally recognized tiger shark destination" },
-                  { icon: ShieldCheck, text: "A strong foundation for future growth" },
-                ].map((item) => {
-                  const Icon = item.icon;
-                  return (
-                    <div key={item.text} className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-5 py-4 text-sm text-white/85">
-                      <Icon className="h-4 w-4 text-[#d7f3ed]" />
-                      {item.text}
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-[#fcfaf6] py-24">
-        <div className="mx-auto max-w-7xl px-6">
-          <div className="grid gap-8 lg:grid-cols-[1fr_0.95fr]">
-            <div className="rounded-[2.5rem] bg-white p-10 shadow-sm">
-              <p className="text-sm uppercase tracking-[0.25em] text-[#0f766e]">Experience the Legend</p>
-              <h2 className="mt-4 text-4xl font-light md:text-5xl">
-                Dive into the story
-                <span className="block font-semibold">for yourself</span>
-              </h2>
-              <p className="mt-6 max-w-2xl text-base leading-8 text-[#667085]">
-                Join Scubachannel Fuvahmulah for an unforgettable diving adventure in the waters that helped define the island's reputation as a tiger shark destination.
-              </p>
-
-              <div className="mt-8 flex flex-wrap gap-4">
-                <a href="/courses" className="inline-flex items-center gap-2 rounded-full bg-[#0f766e] px-6 py-3 text-sm font-medium text-white">
-                  Explore Courses <ArrowRight className="h-4 w-4" />
-                </a>
-                <a href="/contact" className="rounded-full border border-[#d9cfbf] px-6 py-3 text-sm font-medium text-[#1f2a37]">
-                  Contact Us
-                </a>
-              </div>
-            </div>
-
-            <div className="rounded-[2.5rem] bg-[#1f2a37] p-10 text-white shadow-sm">
-              <p className="text-sm uppercase tracking-[0.25em] text-white/60">Why This Page Works</p>
-              <h2 className="mt-4 text-4xl font-light md:text-5xl">
-                Same story,
-                <span className="block font-semibold">more premium presentation</span>
-              </h2>
-              <div className="mt-8 space-y-4">
-                {[
-                  "Uses the same visual language as your crew, courses, transfer, and contact pages",
-                  "Keeps the founder-led origin story at the center of the page",
-                  "Turns the historical content into easier-to-scan premium sections",
-                  "Makes the about page feel more aligned with a high-end dive brand",
-                ].map((item) => (
-                  <div key={item} className="flex items-start gap-3 rounded-2xl border border-white/10 bg-white/5 px-5 py-4 text-sm text-white/85">
-                    <BadgeCheck className="mt-1 h-4 w-4 text-[#d7f3ed]" />
-                    {item}
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="contact" className="bg-[#1f2a37] py-24 text-white">
-        <div className="mx-auto max-w-7xl px-6">
-          <div className="mb-12">
-            <p className="text-sm uppercase tracking-[0.25em] text-white/60">Contact Us</p>
-            <h2 className="mt-4 text-4xl font-light md:text-5xl">
-              Speak with
-              <span className="block font-semibold">our team</span>
-            </h2>
-          </div>
-
-          <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
-            <div>
-              <p className="max-w-lg text-base leading-8 text-white/70">
-                Reach out for dive bookings, tiger shark adventures, courses, or questions about Scubachannel Fuvahmulah and its story.
-              </p>
-
-              <div className="mt-10 space-y-5 text-white/80">
-                <div className="flex items-start gap-3">
-                  <MapPin className="mt-1 h-5 w-5 text-[#d7f3ed]" />
-                  <p>Zindha, husnuheenamagu, funaadu, Fuvahmulah Island, Maldives</p>
-                </div>
-                <div className="flex items-center gap-3">
-                  <Phone className="h-5 w-5 text-[#d7f3ed]" />
-                  <a href="tel:+9607930760">+960 7930760</a>
-                </div>
-                <div className="flex items-center gap-3">
-                  <Mail className="h-5 w-5 text-[#d7f3ed]" />
-                  <a href="mailto:sales@scubachannelfuvahmulah.com">sales@scubachannelfuvahmulah.com</a>
-                </div>
-              </div>
-            </div>
-
-            <form className="rounded-[2.5rem] bg-white p-8 text-[#1f2a37]">
-              <h3 className="text-2xl font-medium">Send a message</h3>
-              <div className="mt-6 space-y-4">
-                <input type="text" placeholder="Name" className="w-full rounded-full border border-[#e6ddd1] bg-[#fcfaf6] px-5 py-4 text-sm outline-none" />
-                <input type="email" placeholder="Email" className="w-full rounded-full border border-[#e6ddd1] bg-[#fcfaf6] px-5 py-4 text-sm outline-none" />
-                <input type="text" placeholder="Subject" className="w-full rounded-full border border-[#e6ddd1] bg-[#fcfaf6] px-5 py-4 text-sm outline-none" />
-                <textarea rows={6} placeholder="Message" className="w-full rounded-[1.5rem] border border-[#e6ddd1] bg-[#fcfaf6] px-5 py-4 text-sm outline-none" />
-                <button type="submit" className="inline-flex items-center gap-2 rounded-full bg-[#0f766e] px-6 py-3 text-sm font-medium text-white">
-                  Send Message <ArrowRight className="h-4 w-4" />
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
-      </section>
-
+      {/* Footer and Remaining sections consistent with your design... */}
       <footer className="bg-[#16202b] px-6 py-10 text-white/55">
         <div className="mx-auto grid max-w-7xl gap-10 md:grid-cols-4">
           <div>
@@ -578,42 +300,12 @@ export default function AboutPage() {
               </div>
             </div>
             <p className="mt-4 max-w-sm text-sm leading-7 text-white/55">
-              Your premier diving center in Fuvahmulah, Maldives, offering unforgettable underwater experiences and professional PADI courses.
+              Premier diving center in Fuvahmulah, Maldives.
             </p>
           </div>
-
-          <div>
-            <p className="text-sm font-medium text-white">Quick Links</p>
-            <div className="mt-4 space-y-3 text-sm">
-              <a href="/#home" className="block hover:text-white">Home</a>
-              <a href="/about" className="block hover:text-white">About Us</a>
-              <a href="/courses" className="block hover:text-white">Courses</a>
-              <a href="/contact" className="block hover:text-white">Contact</a>
-            </div>
-          </div>
-
-          <div>
-            <p className="text-sm font-medium text-white">Story Highlights</p>
-            <div className="mt-4 space-y-3 text-sm">
-              <p>Origins in 2011</p>
-              <p>Tiger shark discovery</p>
-              <p>Growth of dive tourism</p>
-              <p>World-class destination</p>
-            </div>
-          </div>
-
-          <div>
-            <p className="text-sm font-medium text-white">Contact Info</p>
-            <div className="mt-4 space-y-3 text-sm">
-              <p>Zindha, husnuheenamagu, funaadu, Fuvahmulah Island, Maldives</p>
-              <a href="tel:+9607930760" className="block hover:text-white">+960 7930760</a>
-              <a href="mailto:sales@scubachannelfuvahmulah.com" className="block hover:text-white">sales@scubachannelfuvahmulah.com</a>
-            </div>
-          </div>
         </div>
-
         <div className="mx-auto mt-10 max-w-7xl border-t border-white/10 pt-6 text-sm text-white/40">
-          © 2025 Southern channel Pvt Ltd. All rights reserved.
+          © 2026 Southern channel Pvt Ltd. All rights reserved.
         </div>
       </footer>
     </div>
