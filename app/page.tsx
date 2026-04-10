@@ -126,7 +126,7 @@ const COURSES = [
 ];
 
 const HERO_MEDIA: HeroMedia[] = [
-  { type: "video", src: "/dolphin-show.MOV" },
+  { type: "video", src: "/whaleview.mp4" },
   {
     type: "image",
     src: "/fvm-pic.jpg",
@@ -139,7 +139,7 @@ const HERO_MEDIA: HeroMedia[] = [
 ];
 const IMAGES = [
   "/dive.jpg",
-  "/girldiving.webp",
+  "/whaleimg.jpg",
   "/loneshark.webp",
   "/manta.webp",
   "shark-4.webp",
@@ -694,79 +694,94 @@ export default function Page() {
         </div>
       </section>
 
-      <section id="resources" className="bg-[#fcfaf6] py-24">
-        <div className="mx-auto max-w-7xl px-6">
-          <div className="grid gap-8 lg:grid-cols-[1fr_0.95fr]">
-            <div className="rounded-[2.5rem] bg-white p-10 shadow-sm">
-              <p className="text-sm uppercase tracking-[0.25em] text-[#0f766e]">
-                Diving Resources
-              </p>
-              <h2 className="mt-4 text-4xl font-light md:text-5xl">
-                Useful information
-                <span className="block font-semibold">before your dive</span>
-              </h2>
-              <p className="mt-6 max-w-2xl text-base leading-8 text-[#667085]">
-                Download the official diving policies and requirements PDF directly
-                from the live site.
-              </p>
+    <section id="resources" className="bg-[#fcfaf6] py-24">
+  <div className="mx-auto max-w-7xl px-6">
+    <div className="grid gap-8 lg:grid-cols-[1fr_0.95fr]">
+      
+      {/* Useful Information Card */}
+      <div className="rounded-[2.5rem] bg-white p-10 shadow-sm flex flex-col">
+        <div className="flex-1">
+          <p className="text-sm uppercase tracking-[0.25em] text-[#0f766e]">
+            Diving Resources
+          </p>
+          <h2 className="mt-4 text-4xl font-light md:text-5xl">
+            Useful information
+            <span className="block font-semibold">before your dive</span>
+          </h2>
+          <p className="mt-6 max-w-2xl text-base leading-8 text-[#667085]">
+            Download the official diving policies and requirements PDF directly
+            from the live site.
+          </p>
 
-              <div className="mt-8 flex flex-wrap gap-4">
-                <a
-                  href={"/read.pdf"}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex items-center gap-3 rounded-full bg-[#0f766e] px-6 py-3 text-sm font-medium text-white"
-                >
-                  <FileText className="h-4 w-4" />
-                  Read PDF
-                </a>
+          <div className="mt-8 flex flex-wrap gap-4">
+            <a
+              href={"/read.pdf"}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-3 rounded-full bg-[#0f766e] px-6 py-3 text-sm font-medium text-white"
+            >
+              <FileText className="h-4 w-4" />
+              Read PDF
+            </a>
 
-                <a
-                  href="#policies"
-                  className="rounded-full border border-[#d9cfbf] px-6 py-3 text-sm font-medium text-[#1f2a37]"
-                >
-                  View Policies
-                </a>
-              </div>
-            </div>
-
-            <div className="rounded-[2.5rem] bg-[#1f2a37] p-10 text-white">
-              <p className="text-sm uppercase tracking-[0.25em] text-white/60">Ready</p>
-              <h2 className="mt-4 text-4xl font-light md:text-5xl">
-                Ready for an
-                <span className="block font-semibold">Unforgettable Diving Adventure?</span>
-              </h2>
-              <p className="mt-6 text-base leading-8 text-white/70">
-                Book your diving experience today and discover the underwater wonders
-                of Fuvahmulah with expert local guides.
-              </p>
-
-              <div className="mt-8 grid gap-3">
-                {[
-                  "Scuba trips",
-                  "Tiger shark encounters",
-                  "PADI training",
-                  "Trip planning support",
-                ].map((item) => (
-                  <div
-                    key={item}
-                    className="rounded-2xl border border-white/10 bg-white/5 px-5 py-4 text-sm text-white/85"
-                  >
-                    {item}
-                  </div>
-                ))}
-              </div>
-
-              <a
-                href="#contact"
-                className="mt-8 inline-flex items-center gap-2 text-sm font-medium text-white"
-              >
-                Contact our team <ArrowRight className="h-4 w-4" />
-              </a>
-            </div>
+            <a
+              href="#policies"
+              className="rounded-full border border-[#d9cfbf] px-6 py-3 text-sm font-medium text-[#1f2a37]"
+            >
+              View Policies
+            </a>
           </div>
         </div>
-      </section>
+
+        {/* The map added to the bottom of this specific box */}
+        <div className="mt-10 overflow-hidden rounded-3xl border border-[#f0ebe3]">
+          <img 
+            src="/mapisland.png" 
+            alt="Island Map" 
+            className="w-full object-cover"
+          />
+        </div>
+      </div>
+
+      {/* Ready for Adventure Card */}
+      <div className="rounded-[2.5rem] bg-[#1f2a37] p-10 text-white">
+        <p className="text-sm uppercase tracking-[0.25em] text-white/60">Ready</p>
+        <h2 className="mt-4 text-4xl font-light md:text-5xl">
+          Ready for an
+          <span className="block font-semibold">Unforgettable Diving Adventure?</span>
+        </h2>
+        <p className="mt-6 text-base leading-8 text-white/70">
+          Book your diving experience today and discover the underwater wonders
+          of Fuvahmulah with expert local guides.
+        </p>
+
+        <div className="mt-8 grid gap-3">
+          {[
+            "Scuba trips",
+            "Tiger shark encounters",
+            "PADI training",
+            "Trip planning support",
+          ].map((item) => (
+            <div
+              key={item}
+              className="rounded-2xl border border-white/10 bg-white/5 px-5 py-4 text-sm text-white/85"
+            >
+              {item}
+            </div>
+          ))}
+        </div>
+
+        <a
+          href="#contact"
+          className="mt-8 inline-flex items-center gap-2 text-sm font-medium text-white"
+        >
+          Contact our team <ArrowRight className="h-4 w-4" />
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</section>
 
       <section id="contact" className="bg-[#1f2a37] py-24 text-white">
         <div className="mx-auto max-w-7xl px-6">

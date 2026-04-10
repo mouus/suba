@@ -174,7 +174,7 @@ export default function NavBar() {
                 <a href="#" className="text-white/60 hover:text-white transition-colors"><FaTiktok size={26} /></a>
               </div>
               <a 
-                href="/contact" 
+                href="/book" 
                 onClick={() => setOpen(false)}
                 className="block w-full rounded-full bg-white py-4 text-center text-lg font-semibold text-[#1f2a37] active:scale-95 transition-transform shadow-lg"
               >
