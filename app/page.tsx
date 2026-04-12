@@ -131,7 +131,7 @@ const HERO_MEDIA: HeroMedia[] = [
     type: "image",
     src: "/fvm-pic.jpg",
   },
-  { type: "video", src: "/img77.mp4" },
+  { type: "video", src: "/img77.MP4" },
   {
     type: "image",
     src: "/fvm-3.JPG",
