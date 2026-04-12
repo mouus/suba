@@ -299,19 +299,19 @@ export default function PricingPage() {
 
           <div className="grid lg:grid-cols-2 gap-0 bg-[#fcfaf6] rounded-[3rem] overflow-hidden border border-gray-100 shadow-xl">
             <div className="relative h-full min-h-[400px]">
-               <img src={activeCourse.image} className="absolute inset-0 h-full w-full object-cover" alt="Dive Course" />
+               <img src={activeCourse?.image} className="absolute inset-0 h-full w-full object-cover" alt="Dive Course" />
             </div>
             <div className="p-8 md:p-16 flex flex-col justify-center">
               <div className="flex justify-between items-end border-b pb-6 border-gray-200 mb-8">
                  <div>
-                    <h3 className="text-3xl font-black mb-1">{activeCourse.subtitle}</h3>
+                    <h3 className="text-3xl font-black mb-1">{activeCourse?.subtitle}</h3>
                     <div className="flex items-center gap-4 text-sm font-bold text-[#0f766e]">
-                      <span className="flex items-center gap-1"><Waves size={16}/> {activeCourse.duration}</span>
+                      <span className="flex items-center gap-1"><Waves size={16}/> {activeCourse?.duration}</span>
                     </div>
                  </div>
-                 <div className="text-4xl font-black text-gray-900">{activeCourse.price}</div>
+                 <div className="text-4xl font-black text-gray-900">{activeCourse?.price}</div>
               </div>
-              <p className="text-gray-500 text-lg leading-relaxed mb-10">{activeCourse.description}</p>
+              <p className="text-gray-500 text-lg leading-relaxed mb-10">{activeCourse?.description}</p>
               <div className="flex flex-wrap gap-2">
                 {COURSES.map(c => (
                   <button 
