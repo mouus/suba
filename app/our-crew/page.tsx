@@ -317,50 +317,7 @@ export default function CrewPage() {
         </div>
       </section>
 
-      <section id="team" className="bg-[#fcfaf6] py-24">
-        <div className="mx-auto max-w-7xl px-6">
-          <div className="text-center">
-            <p className="text-sm uppercase tracking-[0.25em] text-[#0f766e]">
-              Meet Our Team
-            </p>
-            <h2 className="mt-4 text-4xl font-light md:text-5xl">
-              The passionate individuals
-              <span className="block font-semibold">who shape your diving journey</span>
-            </h2>
-            <p className="mx-auto mt-6 max-w-3xl text-base leading-8 text-[#667085]">
-              The passionate individuals who make your diving experience safe, educational, and unforgettable.
-            </p>
-          </div>
-
-          <div className="mt-10 flex flex-wrap justify-center gap-3">
-            {FILTERS.map((filter) => {
-              const isActive = activeFilter === filter.value;
-              return (
-                <button
-                  key={filter.value}
-                  onClick={() => setActiveFilter(filter.value)}
-                  className={`rounded-full border px-5 py-3 text-sm font-medium transition-all duration-200 ${
-                    isActive
-                      ? "border-[#0f766e] bg-[#0f766e] text-white shadow-sm"
-                      : "border-[#d8d8d8] bg-white text-[#1f2a37] hover:border-[#0f766e] hover:text-[#0f766e]"
-                  }`}
-                >
-                  {filter.label}
-                </button>
-              );
-            })}
-          </div>
-
-          <motion.div layout className="mt-12 grid gap-8 xl:grid-cols-2">
-            <AnimatePresence mode="popLayout">
-              {filteredCrew.map((member) => (
-                <CrewCard key={member.name} member={member} />
-              ))}
-            </AnimatePresence>
-          </motion.div>
-        </div>
-      </section>
-
+      
       <section className="mx-auto max-w-7xl px-6 py-24">
         <div className="grid gap-8 lg:grid-cols-[1fr_0.92fr]">
           <div className="overflow-hidden rounded-[2.5rem] bg-[#1f2a37] p-10 text-white shadow-sm md:p-12">

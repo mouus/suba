@@ -1,106 +1,18 @@
 "use client";
 
-import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import React from "react";
 import {
-  ArrowRight,
   Award,
   BadgeCheck,
-  ChevronDown,
-  Compass,
-  Mail,
-  MapPin,
-  Menu,
-  Phone,
-  ShieldCheck,
   Star,
   Waves,
-  X,
-  Camera,
   Trophy,
+  Camera,
 } from "lucide-react";
-import { FaFacebookF, FaInstagram, FaTiktok } from "react-icons/fa";
 import NavBar from "@/components/NavBar";
 
 const LOGO = "/logo.JPG";
 
-const LINKS = [
-  { label: "Home", href: "#home" },
-  {
-    label: "Diving",
-    children: [{ label: "Courses", href: "/courses" }],
-  },
-  {
-    label: "Stay",
-    href: "#hotels",
-    children: [
-      { label: "Guest Houses", href: "/hotels/guest-houses" },
-    ],
-  },
-  { label: "Our Crew", href: "/our-crew" },
-  { label: "Transfer", href: "/transfer" },
-  { label: "About Us", href: "/about" },
-  { label: "Contact", href: "/contact" },
-];
-
-const STORY_POINTS = [
-  {
-    title: "The Pioneer",
-    text: "Mr. Abdulla Zafar Ali is presented as the pioneer behind the discovery of tiger shark diving in Fuvahmulah and a key figure in developing the island's recreational diving story.",
-    icon: Award,
-  },
-  {
-    title: "The Discovery",
-    text: "The page centers on the early discovery of tiger sharks near the harbor, which became the turning point that helped shape Fuvahmulah into a recognized dive destination.",
-    icon: Waves,
-  },
-  {
-    title: "The Legacy",
-    text: "From scarce equipment and no dive centers in 2011 to international recognition, the story highlights the long-term vision behind Scubachannel Fuvahmulah.",
-    icon: Trophy,
-  },
-];
-
-const PIONEER_HIGHLIGHTS = [
-  "First to discover tiger sharks in Fuvahmulah",
-  "Professional dive instructor with years of experience",
-  "Helped transform Fuvahmulah into a world-class diving destination",
-];
-
-const TIMELINE = [
-  {
-    year: "2011",
-    title: "First Dive Experience",
-    text: "Mr. Zafar had his first scuba diving experience in Fuvahmulah at a time when equipment was scarce and there were no dive centers on the island.",
-    image: "/img-7.webp",
-  },
-  {
-    year: "2012",
-    title: "Tiger Shark Discovery",
-    text: "Tiger sharks were identified near the harbor area, marking a pivotal moment in the growth of diving in the region.",
-    image: "/img-3.webp",
-  },
-  {
-    year: "2014 - 2015",
-    title: "Growth Period",
-    text: "Local entrepreneurs began investing in the diving sector, with new guest houses and dive activity expanding around the island.",
-    image: "/img-2.webp",
-  },
-  {
-    year: "2019",
-    title: "First Guided Dives",
-    text: "Guided tiger shark dives became a stronger tourism offering, helping establish the foundation of the island's shark diving reputation.",
-    image: "/img.webp",
-  },
-  {
-    year: "Present",
-    title: "World-Class Destination",
-    text: "Fuvahmulah is presented as the world's number one tiger shark destination, with a growing hospitality and dive infrastructure.",
-    image: "/fvm-3.JPG",
-  },
-];
-
-// Corrected Image Array
 const images = [
   "/fvm-3.JPG",
   "/fvm-pic.jpg",
@@ -108,204 +20,198 @@ const images = [
   "/img-3.webp",
   "/img-5.webp",
   "/img-7.webp",
-  "/img-8.webp",
+  "/img.webp",
   "/img-9.webp",
 ];
 
 const VISUAL_JOURNEY = [
   { year: "2011", label: "Early days of diving in Fuvahmulah" },
-  { year: "2012", label: "First tiger shark encounters" },
+  { year: "", label: "Beautiful Fuvahmulah Island" },
+  { year: "2012", label: "First Tiger shark encounters" },
   { year: "2014", label: "Growing our team of instructors" },
   { year: "2016", label: "Gaining international recognition" },
-  { year: "2018", label: "Shark conservation initiatives" },
+  { year: "2018", label: "Our shark conservation initiatives" },
+  { year: "2019", label: "Opening our first dive center" },
   { year: "Today", label: "Our operations today" },
 ];
 
-const STATS = [
-  { value: "21", label: "Guest Houses" },
-  { value: "7", label: "Dive Centers" },
-  { value: "#1", label: "Tiger Shark Destination" },
+const TIMELINE = [
+  {
+    year: "2011",
+    title: "First Dive Experience",
+    text: "Mr. Zafar had his first scuba diving experience in Fuvahmulah with scarce equipment and no dive centers.",
+    image: "/img-7.webp",
+  },
+  {
+    year: "2012",
+    title: "Tiger Shark Discovery",
+    text: "Discovery of Tiger sharks near the harbor of Fuvahmulah.",
+    image: "/img-3.webp",
+  },
+  {
+    year: "2014-2015",
+    title: "Growth Period",
+    text: "New dive centers and guest houses opened.",
+    image: "/img-2.webp",
+  },
+  {
+    year: "2019",
+    title: "First Guided Dives",
+    text: "Mr. Zafar began guiding clients to the Tiger shark point.",
+    image: "/img.webp",
+  },
+  {
+    year: "Present",
+    title: "World-Class Destination",
+    text: "Now the #1 Tiger shark destination.",
+    image: "/fvm-3.JPG",
+  },
 ];
-
-const JOURNEY_QUOTES = [
-  "In 2011, dive equipment was scarce and there were no dive centers or dive schools on the island.",
-  "The discovery of tiger sharks near the harbor created the momentum that pushed recreational diving forward in Fuvahmulah.",
-  "Today, the page presents Fuvahmulah as a globally recognized tiger shark destination built through persistence, experimentation, and local belief.",
-];
-
-function TimelineCard({ year, title, text, image }: { year: string; title: string; text: string; image: string }) {
-  return (
-    <div className="overflow-hidden rounded-[2rem] bg-white shadow-sm">
-      <div className="relative h-64 overflow-hidden">
-        <img src={image} alt={title} className="h-full w-full object-cover" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#1f2a37]/70 via-transparent to-transparent" />
-        <div className="absolute bottom-5 left-5 rounded-full bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-[#1f2a37]">
-          {year}
-        </div>
-      </div>
-      <div className="p-8">
-        <h3 className="text-2xl font-medium text-[#1f2a37]">{title}</h3>
-        <p className="mt-4 text-sm leading-8 text-[#667085]">{text}</p>
-      </div>
-    </div>
-  );
-}
 
 export default function AboutPage() {
   return (
     <div className="bg-[#f6f1e8] text-[#1f2a37]">
       <NavBar />
 
-      {/* Hero Section */}
-      <section className="relative min-h-[88vh] overflow-hidden pb-12 pt-32 md:pt-40">
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: "url(/fvm-pic.jpg)" }}
-        />
-        <div className="absolute inset-0 bg-black/45" />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/25 via-black/40 to-black/65" />
-
-        <div className="relative mx-auto flex min-h-[88vh] max-w-7xl items-center px-6">
-          <div className="max-w-3xl text-white">
-            <p className="text-sm uppercase tracking-[0.32em] text-white/80">Fuvahmulah, Maldives</p>
-            <h1 className="mt-4 text-5xl font-light leading-tight md:text-7xl">
-              Our Story
-              <span className="block font-semibold">how a local vision shaped a world-class dive destination</span>
-            </h1>
-            <p className="mt-6 max-w-2xl text-lg leading-8 text-white/80">
-              Scubachannel Fuvahmulah is built on persistence, experimentation, and local belief.
-            </p>
-
-            <div className="mt-10 flex flex-wrap gap-4">
-              <a href="#story" className="rounded-full bg-white px-6 py-3 text-sm font-medium text-[#1f2a37]">
-                Read The Story
-              </a>
-              <a href="#journey" className="rounded-full border border-white/30 px-6 py-3 text-sm font-medium text-white">
-                View Timeline
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Intro Story */}
-      <section id="story" className="mx-auto max-w-7xl px-6 py-24">
-        <div className="grid gap-12 lg:grid-cols-[1fr_1.05fr] lg:items-center">
-          <div>
-            <p className="text-sm uppercase tracking-[0.25em] text-[#0f766e]">About Scubachannel</p>
-            <h2 className="mt-4 text-4xl font-light md:text-5xl">
-              The story behind
-              <span className="block font-semibold">Fuvahmulah’s tiger shark legacy</span>
-            </h2>
-          </div>
-          <p className="text-base leading-8 text-[#667085]">
-            The origin story of tiger shark diving in Fuvahmulah is centered around the persistence and long-term vision of Mr. Abdulla Zafar Ali.
+      {/* HERO */}
+      <section className="relative min-h-[85vh] flex items-center">
+        <div className="absolute inset-0 bg-[url('/fvm-pic.jpg')] bg-cover bg-center" />
+        <div className="absolute inset-0 bg-black/50" />
+        <div className="relative z-10 px-6 text-white max-w-4xl mx-auto">
+          <h1 className="text-5xl md:text-7xl font-bold tracking-tight">
+            Tracing the Depths of <br />
+            <span>Our Heritage.</span>
+          </h1>
+          <p className="mt-8 text-xl md:text-2xl text-white/90 max-w-2xl leading-relaxed">
+            From the first discovery in 2011 to becoming a global shark sanctuary, explore the journey of the pioneer who put Fuvahmulah on the map.
           </p>
         </div>
-
-        <div className="mt-12 grid gap-6 md:grid-cols-3">
-          {STORY_POINTS.map((item) => {
-            const Icon = item.icon;
-            return (
-              <div key={item.title} className="rounded-[2rem] bg-[#fcfaf6] p-8 shadow-sm">
-                <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-full bg-[#e8f5f2]">
-                  <Icon className="h-5 w-5 text-[#0f766e]" />
-                </div>
-                <h3 className="text-2xl font-medium">{item.title}</h3>
-                <p className="mt-4 text-sm leading-7 text-[#667085]">{item.text}</p>
-              </div>
-            );
-          })}
-        </div>
       </section>
 
-      {/* Visual Journey Section - FIXED Loop and Images */}
-      <section className="py-24">
-        <div className="mx-auto max-w-7xl px-6">
-          <div className="mb-12 flex items-end justify-between gap-6">
-            <div>
-              <p className="text-sm uppercase tracking-[0.25em] text-[#0f766e]">Our Visual Journey</p>
-              <h2 className="mt-4 text-4xl font-light md:text-5xl">A photographic history</h2>
-            </div>
-          </div>
+      {/* PIONEER */}
+      <section className="max-w-7xl mx-auto px-6 py-24 grid lg:grid-cols-2 gap-12 items-center">
+        <img src="/insta1.webp" className="rounded-[2rem] shadow-sm" />
 
-          <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-            {VISUAL_JOURNEY.map((item, index) => (
-              <div key={`${item.year}-${item.label}`} className="overflow-hidden rounded-[2rem] bg-white shadow-sm">
-                <div className="relative h-56 overflow-hidden">
-                  <img
-                    src={images[index % images.length]}
-                    alt={item.label}
-                    className="h-full w-full object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#1f2a37]/65 via-transparent to-transparent" />
-                  <div className="absolute left-5 top-5 inline-flex items-center gap-2 rounded-full bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-[#1f2a37]">
-                    <Camera className="h-3.5 w-3.5" />
-                    {item.year}
-                  </div>
-                </div>
-                <div className="p-6">
-                  <p className="text-lg font-medium text-[#1f2a37]">{item.label}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+        <div>
+          <h2 className="text-4xl font-light">Mr. Abdulla Zafar Ali</h2>
+          <p className="text-[#0f766e] uppercase tracking-[0.25em] mt-2">The Pioneer</p>
 
-      {/* Timeline Section */}
-      <section id="journey" className="bg-[#fcfaf6] py-24">
-        <div className="mx-auto max-w-7xl px-6">
-          <div className="text-center">
-            <p className="text-sm uppercase tracking-[0.25em] text-[#0f766e]">Our Journey</p>
-            <h2 className="mt-4 text-4xl font-light md:text-5xl">
-              From humble beginnings
-              <span className="block font-semibold">to a globally recognized destination</span>
-            </h2>
-          </div>
-          <div className="mt-12 grid gap-6 xl:grid-cols-3">
-            {TIMELINE.map((item) => (
-              <TimelineCard key={`${item.year}-${item.title}`} {...item} />
-            ))}
-          </div>
-        </div>
-        <a
-  href="https://wa.me/9607930760?text=Hello%20Scubachannel%20Fuvahmulah,%20I%20would%20like%20to%20enquire%20about%20diving."
-  target="_blank"
-  rel="noreferrer"
-  className="fixed bottom-6 right-6 z-50 flex items-center gap-3 rounded-full bg-[#0f766e] px-5 py-3 text-white shadow-lg hover:scale-105 transition-all"
->
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    className="h-5 w-5"
-    fill="currentColor"
-    viewBox="0 0 24 24"
-  >
-    <path d="M20.52 3.48A11.79 11.79 0 0012.02 0C5.38 0 .01 5.37 0 12c0 2.11.55 4.16 1.6 5.97L0 24l6.19-1.62A11.93 11.93 0 0012.02 24C18.66 24 24 18.63 24 12c0-3.2-1.25-6.2-3.48-8.52zM12.02 21.82c-1.82 0-3.6-.49-5.15-1.42l-.37-.22-3.67.96.98-3.57-.24-.37A9.77 9.77 0 012.2 12c0-5.43 4.41-9.82 9.82-9.82 2.62 0 5.08 1.02 6.94 2.88A9.75 9.75 0 0121.82 12c0 5.41-4.39 9.82-9.8 9.82zm5.39-7.38c-.3-.15-1.78-.88-2.06-.98-.27-.1-.47-.15-.67.15-.2.3-.77.98-.94 1.18-.17.2-.35.22-.65.07-.3-.15-1.28-.47-2.43-1.5-.9-.8-1.5-1.78-1.67-2.08-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.57-.48-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.05 1.02-1.05 2.5 0 1.47 1.08 2.9 1.23 3.1.15.2 2.13 3.25 5.17 4.56.72.31 1.28.5 1.72.64.72.23 1.37.2 1.88.12.57-.08 1.78-.73 2.03-1.44.25-.7.25-1.3.17-1.44-.07-.13-.27-.2-.57-.35z" />
-  </svg>
+          <p className="mt-6 text-[#667085] leading-8">
+            Mr. Abdulla Zafar Ali pioneered the discovery of the first Tiger shark in Fuvahmulah. He is currently working as an instructor in Fuvahmulah. Apart from being a dive instructor, he is one of the few divers who are continually concerned about the advancement of this field in Fuvahmulah.
+          </p>
 
-  <span className="text-sm font-medium">Chat</span>
-</a>
-      </section>
-
-      {/* Footer and Remaining sections consistent with your design... */}
-      <footer className="bg-[#16202b] px-6 py-10 text-white/55">
-        <div className="mx-auto grid max-w-7xl gap-10 md:grid-cols-4">
-          <div>
-            <div className="flex items-center gap-3">
-              <img src={LOGO} alt="Scubachannel logo" className="h-11 w-11 rounded-full object-cover" />
+          <div className="mt-8 space-y-4">
+            <div className="flex gap-3">
+              <Award />
               <div>
-                <p className="text-sm font-semibold tracking-[0.2em] text-white">SCUBACHANNEL</p>
-                <p className="text-[10px] tracking-[0.25em] text-white/50">FUVAHMULAH</p>
+                <p className="font-medium">Diving Pioneer</p>
+                <p className="text-sm text-[#667085]">First to discover Tiger sharks in Fuvahmulah</p>
               </div>
             </div>
-            <p className="mt-4 max-w-sm text-sm leading-7 text-white/55">
-              Premier diving center in Fuvahmulah, Maldives.
-            </p>
+
+            <div className="flex gap-3">
+              <BadgeCheck />
+              <div>
+                <p className="font-medium">Certified Instructor</p>
+                <p className="text-sm text-[#667085]">Professional dive instructor with years of experience</p>
+              </div>
+            </div>
+
+            <div className="flex gap-3">
+              <Star />
+              <div>
+                <p className="font-medium">Visionary</p>
+                <p className="text-sm text-[#667085]">Transformed Fuvahmulah into a world-class diving destination</p>
+              </div>
+            </div>
           </div>
         </div>
-        <div className="mx-auto mt-10 max-w-7xl border-t border-white/10 pt-6 text-sm text-white/40">
-          © 2026 Southern channel Pvt Ltd. All rights reserved.
+      </section>
+
+      {/* VISUAL JOURNEY */}
+      <section className="max-w-7xl mx-auto px-6 py-24">
+        <h2 className="text-4xl font-light">Our Visual Journey</h2>
+
+        <div className="grid md:grid-cols-3 gap-6 mt-12">
+          {VISUAL_JOURNEY.map((item, index) => (
+            <div key={index} className="rounded-[2rem] overflow-hidden bg-white shadow-sm">
+              <img src={images[index % images.length]} className="h-56 w-full object-cover" />
+              <div className="p-6">
+                <p className="text-sm text-[#0f766e]">{item.year}</p>
+                <p className="text-lg">{item.label}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* JOURNEY STORY (FULL FIXED) */}
+      <section className="max-w-4xl mx-auto px-6 py-24 text-[#667085] leading-8">
+        <h2 className="text-4xl font-light text-[#1f2a37] mb-6">The Journey</h2>
+        <p className="mb-6">
+          The remarkable story of how Tiger shark diving began in Fuvahmulah, in the words of Mr. Abdulla Zafar Ali.
+        </p>
+
+        <div className="space-y-6">
+          <p>
+            I had my very first experience scuba diving in Fuvahmulah in the year 2011. At that time the dive equipment was very scarce and there were no dive center or dive schools in this island. But I never gave up. The ambition of bringing a successful recreational diving in Fuvahmulah never dies.
+          </p>
+
+          <p>
+            As time passes, I came to know that there are Tiger sharks close to the harbor of this island. This made me more enthusiastic in bringing recreational diving. I managed to get scuba equipment from one of the local fishing boats (boadhi dhoni), Tharaanage Iburey, and with the help of Mr. Hussain Saeed (Kao) and Riyaz, Fehigiri, I was able to catch the first sight of a Tiger shark.
+          </p>
+
+          <p>
+            When I brought this news to my friends, most of them made fun of what I had told them. Many people said that you won't be able to see that kind of shark on this island. It was then that I felt I should discuss this with stakeholders. Hence, I managed to convince a few divers who were keen to explore this brand-new Tiger shark spot.
+          </p>
+
+          <p>
+            As I envisioned earlier, after a few months, a local entrepreneur (Mr. Saud) established a guest house and started selling diving trips to the Tiger shark point, and I became one of the divers who guided clients diving for Mr. Saud. Within 1 or 2 years, people started investing in this field. New dive centers and guest houses opened.
+          </p>
+
+          <p>
+            Today, I stand proudly as a pioneer of this profitable venture. We now have 21 guest houses and 7 diving schools or centers. I believe there is still room for development and expansion in this field. At the same time, I wish to see the water sport activities prosper and expand in a wider range.
+          </p>
+
+          <p className="pt-6 font-medium text-[#1f2a37]">
+            Mr. Abdulla Zafar Ali <br />
+            Founder, Scubachannel Fuvahmulah
+          </p>
+        </div>
+      </section>
+
+      {/* TIMELINE */}
+      <section className="max-w-7xl mx-auto px-6 py-24 grid xl:grid-cols-3 gap-6">
+        {TIMELINE.map((item, i) => (
+          <div key={i} className="rounded-[2rem] overflow-hidden bg-white shadow-sm">
+            <img src={item.image} className="h-64 w-full object-cover" />
+            <div className="p-6">
+              <p className="text-sm text-[#0f766e]">{item.year}</p>
+              <h3 className="text-xl">{item.title}</h3>
+              <p className="text-sm text-[#667085] mt-2">{item.text}</p>
+            </div>
+          </div>
+        ))}
+      </section>
+
+      {/* FOOTER */}
+      <footer className="bg-[#16202b] px-6 py-10 text-white/55">
+        <div className="mx-auto max-w-7xl">
+          <div className="flex items-center gap-3">
+            <img src={LOGO} className="h-11 w-11 rounded-full" />
+            <div>
+              <p className="text-sm font-semibold text-white">SCUBACHANNEL</p>
+              <p className="text-xs text-white/50">FUVAHMULAH</p>
+            </div>
+          </div>
+
+          <p className="mt-4 text-sm">
+            Premier diving center in Fuvahmulah, Maldives.
+          </p>
+
+          <div className="mt-6 border-t border-white/10 pt-4 text-sm">
+            © 2026 Southern channel Pvt Ltd. All rights reserved.
+          </div>
         </div>
       </footer>
     </div>
