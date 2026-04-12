@@ -116,7 +116,7 @@ const COURSES = [
     subtitle: "PADI Open Water Diver",
     duration: "3 - 4 days",
     price: "$550",
-    image: "https://www.scubachannelfuvahmulah.com/fvm-3.JPG",
+    image: "/shark.webp",
     description: "The world's most popular course. Qualifies you to dive to 18m independently with a buddy.",
   },
   {
@@ -125,7 +125,7 @@ const COURSES = [
     subtitle: "PADI Advanced Open Water",
     duration: "2+ days",
     price: "$421",
-    image: "https://www.scubachannelfuvahmulah.com/fvm-pic.jpg",
+    image: "/diving1.JPG",
     description: "Advance your skills with 5 adventure dives, including deep and navigation specialties.",
   },
   {
@@ -134,7 +134,7 @@ const COURSES = [
     subtitle: "Rescue Diver + Emergency First Response",
     duration: "5-7 days",
     price: "$600-$750",
-    image: "https://www.scubachannelfuvahmulah.com/fvm-3.JPG",
+    image: "/finshark.JPEG",
     description: "Learn to manage dive emergencies and provide first aid. (EFR only is $150).",
   },
   {
@@ -143,7 +143,7 @@ const COURSES = [
     subtitle: "PADI Divemaster Course",
     duration: "2 - 4 weeks",
     price: "$1000+",
-    image: "https://www.scubachannelfuvahmulah.com/fvm-pic.jpg",
+    image: "/instruct.webp",
     description: "Join the ranks of dive professionals. Lead groups and assist instructors.",
   },
 ];
