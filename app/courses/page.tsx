@@ -17,59 +17,98 @@ import NavBar from "@/components/NavBar";
 
 const LOGO = "https://www.scubachannelfuvahmulah.com/logo.JPG";
 
-// 1. DIVE & STAY PACKAGES (Optimized against competitor pricing)
+// ✅ UPDATED PACKAGE DATA (8 Packages with correct pricing)
 const PACKAGE_DATA = [
   {
-    id: "3-nights",
+    id: "3n",
     duration: "3 Nights & 6 Dives",
-    description: "2 Dive Days (3 Dives/Day). Includes Hotel Room, Breakfast, and Transfers.",
+    description: "2 Days of diving. Includes Hotel Room, Breakfast, and Transfers.",
     prices: [
-      { label: "1 Person (Hotel Room)", value: "$375" },
-      { label: "2 People (Shared)", value: "$680" },
-      { label: "Non-Diver", value: "$180" },
-    ],
-    groupDiscounts: [
-      { label: "4 Persons", discount: "9%", value: "$1,365" },
-      { label: "6 Persons", discount: "12%", value: "$1,980" },
-      { label: "8 Persons", discount: "15%", value: "$2,550" },
+      { label: "1 Person (Hotel Room)", value: "$610" },
+      { label: "2 People (Shared)", value: "$1017" },
+      { label: "Non-Diver", value: "$250" },
     ],
     includes: ["2 Dive Days (3 dives/day)", "Hotel Room + Breakfast", "Airport Pick-up & Drop-off", "Dive Site Transfers", "Green Tax & GST Included"],
   },
   {
-    id: "5-nights",
-    duration: "5 Nights & 12 Dives",
-    description: "4 Dive Days (3 Dives/Day). Optimized for Tiger Shark & Pelagic encounters.",
+    id: "4n",
+    duration: "4 Nights & 9 Dives",
+    description: "3 Days of diving. Includes Hotel Room, Breakfast, and Transfers.",
     prices: [
-      { label: "1 Person (Hotel Room)", value: "$620" },
-      { label: "2 People (Shared)", value: "$1,150" },
-      { label: "Non-Diver", value: "$280" },
+      { label: "1 Person (Hotel Room)", value: "$950" },
+      { label: "2 People (Shared)", value: "$1700" },
+      { label: "Non-Diver", value: "$336" },
     ],
-    groupDiscounts: [
-      { label: "4 Persons", discount: "9%", value: "$2,256" },
-      { label: "6 Persons", discount: "12%", value: "$3,274" },
-      { label: "8 Persons", discount: "15%", value: "$4,216" },
+    includes: ["3 Dive Days", "Hotel Room + Breakfast", "Tiger Shark & Reef Dives", "Airport Transfers", "All Applicable Taxes"],
+  },
+  {
+    id: "5n",
+    duration: "5 Nights & 9 Dives",
+    description: "3 Days of diving. Extended stay for more relaxation.",
+    prices: [
+      { label: "1 Person (Hotel Room)", value: "$1039" },
+      { label: "2 People (Shared)", value: "$1817" },
+      { label: "Non-Diver", value: "$420" },
+    ],
+    includes: ["3 Dive Days", "Hotel Room + Breakfast", "Tiger Shark & Reef Dives", "Airport Transfers", "All Applicable Taxes"],
+  },
+  {
+    id: "6n",
+    duration: "6 Nights & 12 Dives",
+    description: "4 Days of diving. Perfect for seeing the full variety of Fuvahmulah.",
+    prices: [
+      { label: "1 Person (Hotel Room)", value: "$1251" },
+      { label: "2 People (Shared)", value: "$2189" },
+      { label: "Non-Diver", value: "$500" },
     ],
     includes: ["4 Dive Days", "Hotel Room + Breakfast", "Tiger Shark & Reef Dives", "Airport Transfers", "All Applicable Taxes"],
   },
   {
-    id: "7-nights",
-    duration: "7 Nights & 18 Dives",
-    description: "6 Dive Days (3 Dives/Day). Our most comprehensive pelagic residency.",
+    id: "7n",
+    duration: "7 Nights & 15 Dives",
+    description: "5 Days of diving. Our most popular weekly residency.",
     prices: [
-      { label: "1 Person (Hotel Room)", value: "$890" },
-      { label: "2 People (Shared)", value: "$1,160" }, // Matched to compete with Extreme Dive packages
-      { label: "Non-Diver", value: "$400" },
+      { label: "1 Person (Hotel Room)", value: "$1520" },
+      { label: "2 People (Shared)", value: "$2327" },
+      { label: "Non-Diver", value: "$588" },
     ],
-    groupDiscounts: [
-      { label: "4 Persons", discount: "9%", value: "$3,239" },
-      { label: "6 Persons", discount: "12%", value: "$4,699" },
-      { label: "8 Persons", discount: "15%", value: "$6,052" },
+    includes: ["5 Dive Days", "Hotel Room + Breakfast", "Daily Tiger Shark Dives", "Airport Transfers", "All Taxes Included"],
+  },
+  {
+    id: "8n",
+    duration: "8 Nights & 18 Dives",
+    description: "6 Days of diving. Maximum immersion into the blue.",
+    prices: [
+      { label: "1 Person (Hotel Room)", value: "$1790" },
+      { label: "2 People (Shared)", value: "$3160" },
+      { label: "Non-Diver", value: "$672" },
     ],
     includes: ["6 Dive Days", "Hotel Room + Breakfast", "Daily Tiger Shark Dives", "Airport Transfers", "All Taxes Included"],
   },
+  {
+    id: "9n",
+    duration: "9 Nights & 21 Dives",
+    description: "7 Days of diving. For the hardcore shark enthusiasts.",
+    prices: [
+      { label: "1 Person (Hotel Room)", value: "$2062" },
+      { label: "2 People (Shared)", value: "$3800" },
+      { label: "Non-Diver", value: "$756" },
+    ],
+    includes: ["7 Dive Days", "Hotel Room + Breakfast", "Daily Tiger Shark Dives", "Airport Transfers", "All Taxes Included"],
+  },
+  {
+    id: "10n",
+    duration: "10 Nights & 24 Dives",
+    description: "8 Days of diving. The ultimate Fuvahmulah expedition.",
+    prices: [
+      { label: "1 Person (Hotel Room)", value: "$2332" },
+      { label: "2 People (Shared)", value: "$4376" },
+      { label: "Non-Diver", value: "$830" },
+    ],
+    includes: ["8 Dive Days", "Hotel Room + Breakfast", "Unlimited Potential for Pelagics", "Airport Transfers", "All Taxes Included"],
+  },
 ];
 
-// 2. CORE PADI COURSES
 const COURSES = [
   {
     id: "open-water",
@@ -109,7 +148,6 @@ const COURSES = [
   },
 ];
 
-// 3. SPECIALTY COURSES
 const SPECIALTIES = [
   { name: "Tiger Shark Specialty", time: "2 Days", price: "$300" },
   { name: "Deep Diver (40m)", time: "2 Days", price: "$250" },
@@ -118,7 +156,6 @@ const SPECIALTIES = [
   { name: "Navigation", time: "2 Days", price: "$225" },
 ];
 
-// 4. INDIVIDUAL RATES & RENTALS
 const ADDITIONAL_RATES = [
   {
     title: "Daily Dive Rates",
@@ -175,7 +212,7 @@ export default function PricingPage() {
         <div className="grid lg:grid-cols-[350px_1fr] gap-8">
           
           {/* Package Selector */}
-          <div className="space-y-3">
+          <div className="space-y-3 overflow-y-auto max-h-[800px] pr-2 scrollbar-hide">
             {PACKAGE_DATA.map((pkg) => (
               <button
                 key={pkg.id}
@@ -211,35 +248,6 @@ export default function PricingPage() {
               ))}
             </div>
 
-            {/* Group Discounts */}
-            <div className="mb-8">
-              <button 
-                onClick={() => setShowGroupInfo(!showGroupInfo)}
-                className="flex items-center justify-between w-full p-5 rounded-2xl bg-[#f6f1e8] hover:bg-[#eee5d7] transition-all"
-              >
-                <div className="flex items-center gap-3">
-                  <Users className="h-5 w-5 text-[#0f766e]" />
-                  <span className="font-bold text-sm">Traveling as a group? View Discounts</span>
-                </div>
-                <ChevronDown className={`h-4 w-4 transition-transform ${showGroupInfo ? 'rotate-180' : ''}`} />
-              </button>
-              <AnimatePresence>
-                {showGroupInfo && (
-                  <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }} className="overflow-hidden">
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mt-4">
-                      {selectedPkg.groupDiscounts.map((g) => (
-                        <div key={g.label} className="p-4 rounded-xl border border-dashed border-[#0f766e]/30 text-center">
-                          <p className="text-[10px] font-bold text-[#0f766e]">{g.label}</p>
-                          <p className="text-lg font-black">{g.value}</p>
-                          <p className="text-[9px] text-gray-400">{g.discount} Saving</p>
-                        </div>
-                      ))}
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
-
             <div className="grid md:grid-cols-2 gap-8">
               <div className="space-y-4">
                 <p className="text-[10px] font-bold text-[#0f766e] uppercase tracking-widest mb-3">What's Included</p>
@@ -257,25 +265,24 @@ export default function PricingPage() {
                    <p className="text-xl font-bold mb-1">Book Your Package</p>
                    <p className="text-xs text-gray-400">Secure your dates with our dive team.</p>
                 </div>
-                <a href="https://wa.me/9607221141" className="bg-[#25D366] text-[#1f2a37] py-4 rounded-full font-black flex items-center justify-center gap-2 hover:scale-105 transition-all">
+                <a href="https://wa.me/9607930760" target="_blank" className="bg-[#0f766e] text-[#1f2a37] py-4 rounded-full font-black flex items-center justify-center gap-2 hover:scale-105 transition-all">
                   <FaWhatsapp size={20} /> WHATSAPP BOOKING
                 </a>
               </div>
             </div>
 
-            {/* Map & Info Box */}
-            <div className="mt-10 bg-[#fcfaf6] p-6 rounded-3xl border border-[#eee5d7] grid md:grid-cols-[1fr_250px] gap-6 items-center">
+            {/* Information Box */}
+            <div className="mt-10 bg-[#fcfaf6] p-6 rounded-3xl border border-[#eee5d7] grid md:grid-cols-1 gap-6 items-center">
               <div>
                 <h3 className="text-sm font-bold text-[#0f766e] mb-2 uppercase tracking-tighter">Useful Information Before You Dive</h3>
-                <ul className="text-xs text-gray-500 space-y-1 list-disc pl-4">
+                <ul className="text-xs text-gray-500 space-y-1 list-disc pl-4 grid md:grid-cols-2 gap-x-4">
                   <li>Valid PADI Certification and Medical form required.</li>
                   <li>Tiger Shark dives are specialized; strictly follow guide instructions.</li>
                   <li>Free 12L Aluminium Tanks (Yoke/DIN) provided.</li>
                   <li>Complimentary towel and drinking water on board.</li>
+                  <li>All packages include green tax and airport transfers.</li>
+                  <li>Equipment rental available separately if not owned.</li>
                 </ul>
-              </div>
-              <div className="bg-white p-2 rounded-2xl shadow-sm border border-gray-100">
-                 <img src="mapisland.png" alt="Dive Area Map" className="w-full h-auto rounded-xl grayscale hover:grayscale-0 transition-all" />
               </div>
             </div>
           </div>
@@ -366,32 +373,30 @@ export default function PricingPage() {
           </div>
           <div className="space-y-4 text-sm text-gray-400">
             <h4 className="text-white font-bold uppercase tracking-widest text-xs">Contact Information</h4>
-            <p className="flex items-center justify-center md:justify-start gap-3"><Phone size={14} className="text-[#0f766e]"/> +960 722-1141</p>
+            <p className="flex items-center justify-center md:justify-start gap-3"><Phone size={14} className="text-[#0f766e]"/> +960 793-0760</p>
             <p className="flex items-center justify-center md:justify-start gap-3"><Mail size={14} className="text-[#0f766e]"/> info@scubachannelfuvahmulah.com</p>
           </div>
-          {/* <div className="space-y-4">
-            <h4 className="text-white font-bold uppercase tracking-widest text-xs">Connect</h4>
-            <div className="flex justify-center md:justify-start gap-6 text-2xl">
-              <FaInstagram className="hover:text-[#0f766e] transition-colors cursor-pointer" /> 
-              <FaFacebook className="hover:text-[#0f766e] transition-colors cursor-pointer" /> 
-              <FaTiktok className="hover:text-[#0f766e] transition-colors cursor-pointer" />
-            </div>
-          </div> */}
         </div>
       </footer>
 
-     {/* WHATSAPP BUTTON */}
-      <a
-        href="https://wa.me/9607930760?text=Hello%20Scubachannel%20Fuvahmulah,%20I%20would%20like%20to%20enquire%20about%20booking%20The%20Sandscape."
-        target="_blank"
-        rel="noreferrer"
-        className="fixed bottom-6 right-6 z-50 flex items-center gap-3 rounded-full bg-[#0f766e] px-5 py-3 text-white shadow-lg hover:scale-105 transition-all"
-      >
-        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M20.52 3.48A11.79 11.79 0 0012.02 0C5.38 0 .01 5.37 0 12c0 2.11.55 4.16 1.6 5.97L0 24l6.19-1.62A11.93 11.93 0 0012.02 24C18.66 24 24 18.63 24 12c0-3.2-1.25-6.2-3.48-8.52zM12.02 21.82c-1.82 0-3.6-.49-5.15-1.42l-.37-.22-3.67.96.98-3.57-.24-.37A9.77 9.77 0 012.2 12c0-5.43 4.41-9.82 9.82-9.82 2.62 0 5.08 1.02 6.94 2.88A9.75 9.75 0 0121.82 12c0 5.41-4.39 9.82-9.8 9.82zm5.39-7.38c-.3-.15-1.78-.88-2.06-.98-.27-.1-.47-.15-.67.15-.2.3-.77.98-.94 1.18-.17.2-.35.22-.65.07-.3-.15-1.28-.47-2.43-1.5-.9-.8-1.5-1.78-1.67-2.08-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.57-.48-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.05 1.02-1.05 2.5 0 1.47 1.08 2.9 1.23 3.1.15.2 2.13 3.25 5.17 4.56.72.31 1.28.5 1.72.64.72.23 1.37.2 1.88.12.57-.08 1.78-.73 2.03-1.44.25-.7.25-1.3.17-1.44-.07-.13-.27-.2-.57-.35z" />
-        </svg>
-        <span className="text-sm font-medium">Chat</span>
-      </a>
+      {/* WHATSAPP FLOAT */}
+         <a
+  href="https://wa.me/9607930760?text=Hello%20Scubachannel%20Fuvahmulah,%20I%20would%20like%20to%20enquire%20about%20diving."
+  target="_blank"
+  rel="noreferrer"
+  className="fixed bottom-6 right-6 z-50 flex items-center gap-3 rounded-full bg-[#0f766e] px-5 py-3 text-white shadow-lg hover:scale-105 transition-all"
+>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    className="h-5 w-5"
+    fill="currentColor"
+    viewBox="0 0 24 24"
+  >
+    <path d="M20.52 3.48A11.79 11.79 0 0012.02 0C5.38 0 .01 5.37 0 12c0 2.11.55 4.16 1.6 5.97L0 24l6.19-1.62A11.93 11.93 0 0012.02 24C18.66 24 24 18.63 24 12c0-3.2-1.25-6.2-3.48-8.52zM12.02 21.82c-1.82 0-3.6-.49-5.15-1.42l-.37-.22-3.67.96.98-3.57-.24-.37A9.77 9.77 0 012.2 12c0-5.43 4.41-9.82 9.82-9.82 2.62 0 5.08 1.02 6.94 2.88A9.75 9.75 0 0121.82 12c0 5.41-4.39 9.82-9.8 9.82zm5.39-7.38c-.3-.15-1.78-.88-2.06-.98-.27-.1-.47-.15-.67.15-.2.3-.77.98-.94 1.18-.17.2-.35.22-.65.07-.3-.15-1.28-.47-2.43-1.5-.9-.8-1.5-1.78-1.67-2.08-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.57-.48-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.05 1.02-1.05 2.5 0 1.47 1.08 2.9 1.23 3.1.15.2 2.13 3.25 5.17 4.56.72.31 1.28.5 1.72.64.72.23 1.37.2 1.88.12.57-.08 1.78-.73 2.03-1.44.25-.7.25-1.3.17-1.44-.07-.13-.27-.2-.57-.35z" />
+  </svg>
+
+  <span className="text-sm font-medium">Chat</span>
+</a>
     </div>
   );
 }
