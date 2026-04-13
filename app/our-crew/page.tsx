@@ -317,7 +317,7 @@ export default function CrewPage() {
         </div>
       </section>
 
-      
+
       <section className="mx-auto max-w-7xl px-6 py-24">
         <div className="grid gap-8 lg:grid-cols-[1fr_0.92fr]">
           <div className="overflow-hidden rounded-[2.5rem] bg-[#1f2a37] p-10 text-white shadow-sm md:p-12">
@@ -392,120 +392,110 @@ export default function CrewPage() {
       </section>
 
       <section id="contact" className="bg-[#1f2a37] py-24 text-white">
-        <div className="mx-auto max-w-7xl px-6">
-          <div className="mb-12">
-            <p className="text-sm uppercase tracking-[0.25em] text-white/60">
-              Contact Us
-            </p>
-            <h2 className="mt-4 text-4xl font-light md:text-5xl">
-              Speak with
-              <span className="block font-semibold">our team</span>
-            </h2>
+  <div className="mx-auto max-w-7xl px-6">
+    <div className="mb-12">
+      <p className="text-sm uppercase tracking-[0.25em] text-white/60">
+        Contact Us
+      </p>
+      <h2 className="mt-4 text-4xl font-light md:text-5xl">
+        Speak with
+        <span className="block font-semibold">our team</span>
+      </h2>
+    </div>
+
+    <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
+      {/* Left Column: Contact Details */}
+      <div>
+        <p className="max-w-lg text-base leading-8 text-white/70">
+          Reach out for dive bookings, shark experiences, trip planning, transfers, or general questions about the crew and your stay in Fuvahmulah.
+        </p>
+
+        <div className="mt-10 space-y-5 text-white/80">
+          <div className="flex items-start gap-3">
+            <MapPin className="mt-1 h-5 w-5 text-[#d7f3ed]" />
+            <p>Zindha, Husnuheenamagu, Funaadu, Fuvahmulah Island, Maldives</p>
           </div>
 
-          <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
-            <div>
-              <p className="max-w-lg text-base leading-8 text-white/70">
-                Reach out for dive bookings, shark experiences, trip planning, transfers, or general questions about the crew and your stay in Fuvahmulah.
-              </p>
+          <div className="flex items-center gap-3">
+            <Phone className="h-5 w-5 text-[#d7f3ed]" />
+            <a href="tel:+9607930760" className="hover:text-white transition-colors">+960 7930760</a>
+          </div>
 
-              <div className="mt-10 space-y-5 text-white/80">
-                <div className="flex items-start gap-3">
-                  <MapPin className="mt-1 h-5 w-5 text-[#d7f3ed]" />
-                  <p>Zindha, Husnuheenamagu, Funaadu, Fuvahmulah Island, Maldives</p>
-                </div>
-
-                <div className="flex items-center gap-3">
-                  <Phone className="h-5 w-5 text-[#d7f3ed]" />
-                  <a href="tel:+9607930760">+960 7930760</a>
-                </div>
-
-                <div className="flex items-center gap-3">
-                  <Mail className="h-5 w-5 text-[#d7f3ed]" />
-                  <a href="mailto:sales@scubachannelfuvahmulah.com">
-                    sales@scubachannelfuvahmulah.com
-                  </a>
-                </div>
-              </div>
-
-              <div className="mt-8 flex gap-4 text-white">
-                <a
-                  href="#"
-                  className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-white/20"
-                  aria-label="Facebook"
-                >
-                  <FaFacebookF className="h-4 w-4" />
-                </a>
-                <a
-                  href="#"
-                  className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-white/20"
-                  aria-label="Instagram"
-                >
-                  <FaInstagram className="h-4 w-4" />
-                </a>
-                <a
-                  href="#"
-                  className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-white/20"
-                  aria-label="TikTok"
-                >
-                  <FaTiktok className="h-4 w-4" />
-                </a>
-              </div>
-            </div>
-
-            <form className="rounded-[2.5rem] bg-white p-8 text-[#1f2a37]">
-              <h3 className="text-2xl font-medium">Send a message</h3>
-
-              <div className="mt-6 space-y-4">
-                <input
-                  type="text"
-                  placeholder="Name"
-                  className="w-full rounded-full border border-[#e6ddd1] bg-[#fcfaf6] px-5 py-4 text-sm outline-none"
-                />
-                <input
-                  type="email"
-                  placeholder="Email"
-                  className="w-full rounded-full border border-[#e6ddd1] bg-[#fcfaf6] px-5 py-4 text-sm outline-none"
-                />
-                <input
-                  type="text"
-                  placeholder="Subject"
-                  className="w-full rounded-full border border-[#e6ddd1] bg-[#fcfaf6] px-5 py-4 text-sm outline-none"
-                />
-                <textarea
-                  rows={6}
-                  placeholder="Message"
-                  className="w-full rounded-[1.5rem] border border-[#e6ddd1] bg-[#fcfaf6] px-5 py-4 text-sm outline-none"
-                />
-                <button
-                  type="submit"
-                  className="inline-flex items-center gap-2 rounded-full bg-[#0f766e] px-6 py-3 text-sm font-medium text-white"
-                >
-                  Send Message <ArrowRight className="h-4 w-4" />
-                </button>
-              </div>
-            </form>
+          <div className="flex items-center gap-3">
+            <Mail className="h-5 w-5 text-[#d7f3ed]" />
+            <a href="mailto:sales@scubachannelfuvahmulah.com" className="hover:text-white transition-colors">
+              sales@scubachannelfuvahmulah.com
+            </a>
           </div>
         </div>
-        <a
-  href="https://wa.me/9607930760?text=Hello%20Scubachannel%20Fuvahmulah,%20I%20would%20like%20to%20enquire%20about%20diving."
-  target="_blank"
-  rel="noreferrer"
-  className="fixed bottom-6 right-6 z-50 flex items-center gap-3 rounded-full bg-[#0f766e] px-5 py-3 text-white shadow-lg hover:scale-105 transition-all"
->
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    className="h-5 w-5"
-    fill="currentColor"
-    viewBox="0 0 24 24"
+
+        <div className="mt-8 flex gap-4 text-white">
+          <a href="#" className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-white/20 hover:bg-white/10 transition-all" aria-label="Facebook">
+            <FaFacebookF className="h-4 w-4" />
+          </a>
+          <a href="#" className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-white/20 hover:bg-white/10 transition-all" aria-label="Instagram">
+            <FaInstagram className="h-4 w-4" />
+          </a>
+          <a href="#" className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-white/20 hover:bg-white/10 transition-all" aria-label="TikTok">
+            <FaTiktok className="h-4 w-4" />
+          </a>
+        </div>
+      </div>
+
+      {/* Right Column: WhatsApp Contact Card (Replaces Form) */}
+      <div className="flex flex-col justify-center rounded-[2.5rem] bg-white p-10 text-[#1f2a37] shadow-xl">
+        <div className="flex flex-col items-center text-center">
+          <div className="mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-[#d7f3ed] text-[#0f766e]">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-10 w-10"
+              fill="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path d="M20.52 3.48A11.79 11.79 0 0012.02 0C5.38 0 .01 5.37 0 12c0 2.11.55 4.16 1.6 5.97L0 24l6.19-1.62A11.93 11.93 0 0012.02 24C18.66 24 24 18.63 24 12c0-3.2-1.25-6.2-3.48-8.52zM12.02 21.82c-1.82 0-3.6-.49-5.15-1.42l-.37-.22-3.67.96.98-3.57-.24-.37A9.77 9.77 0 012.2 12c0-5.43 4.41-9.82 9.82-9.82 2.62 0 5.08 1.02 6.94 2.88A9.75 9.75 0 0121.82 12c0 5.41-4.39 9.82-9.8 9.82zm5.39-7.38c-.3-.15-1.78-.88-2.06-.98-.27-.1-.47-.15-.67.15-.2.3-.77.98-.94 1.18-.17.2-.35.22-.65.07-.3-.15-1.28-.47-2.43-1.5-.9-.8-1.5-1.78-1.67-2.08-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.57-.48-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.05 1.02-1.05 2.5 0 1.47 1.08 2.9 1.23 3.1.15.2 2.13 3.25 5.17 4.56.72.31 1.28.5 1.72.64.72.23 1.37.2 1.88.12.57-.08 1.78-.73 2.03-1.44.25-.7.25-1.3.17-1.44-.07-.13-.27-.2-.57-.35z" />
+            </svg>
+          </div>
+          
+          <h3 className="text-3xl font-semibold">Chat with Us</h3>
+          <p className="mt-4 max-w-sm text-gray-600">
+            For the fastest response, send us a message on WhatsApp. Our team is ready to help with your booking.
+          </p>
+          
+          <div className="mt-8 w-full">
+            <a
+              href="https://wa.me/9607930760?text=Hello%20Scubachannel%20Fuvahmulah,%20I%20would%20like%20to%20enquire%20about%20diving."
+              target="_blank"
+              rel="noreferrer"
+              className="flex w-full items-center justify-center gap-3 rounded-full bg-[#0f766e] py-5 text-lg font-medium text-white shadow-lg transition-transform hover:scale-[1.02] active:scale-95"
+            >
+              Start WhatsApp Chat
+              <ArrowRight className="h-5 w-5" />
+            </a>
+            <p className="mt-4 text-sm text-gray-400">Available Daily: +960 7930760</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {/* Fixed Floating WhatsApp Button (Persistent) */}
+  <a
+    href="https://wa.me/9607930760?text=Hello%20Scubachannel%20Fuvahmulah,%20I%20would%20like%20to%20enquire%20about%20diving."
+    target="_blank"
+    rel="noreferrer"
+    className="fixed bottom-6 right-6 z-50 flex items-center gap-3 rounded-full bg-[#0f766e] px-5 py-3 text-white shadow-lg hover:scale-105 transition-all"
   >
-    <path d="M20.52 3.48A11.79 11.79 0 0012.02 0C5.38 0 .01 5.37 0 12c0 2.11.55 4.16 1.6 5.97L0 24l6.19-1.62A11.93 11.93 0 0012.02 24C18.66 24 24 18.63 24 12c0-3.2-1.25-6.2-3.48-8.52zM12.02 21.82c-1.82 0-3.6-.49-5.15-1.42l-.37-.22-3.67.96.98-3.57-.24-.37A9.77 9.77 0 012.2 12c0-5.43 4.41-9.82 9.82-9.82 2.62 0 5.08 1.02 6.94 2.88A9.75 9.75 0 0121.82 12c0 5.41-4.39 9.82-9.8 9.82zm5.39-7.38c-.3-.15-1.78-.88-2.06-.98-.27-.1-.47-.15-.67.15-.2.3-.77.98-.94 1.18-.17.2-.35.22-.65.07-.3-.15-1.28-.47-2.43-1.5-.9-.8-1.5-1.78-1.67-2.08-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.57-.48-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.05 1.02-1.05 2.5 0 1.47 1.08 2.9 1.23 3.1.15.2 2.13 3.25 5.17 4.56.72.31 1.28.5 1.72.64.72.23 1.37.2 1.88.12.57-.08 1.78-.73 2.03-1.44.25-.7.25-1.3.17-1.44-.07-.13-.27-.2-.57-.35z" />
-  </svg>
-
-  <span className="text-sm font-medium">Chat</span>
-</a>
-      </section>
-
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      className="h-5 w-5"
+      fill="currentColor"
+      viewBox="0 0 24 24"
+    >
+      <path d="M20.52 3.48A11.79 11.79 0 0012.02 0C5.38 0 .01 5.37 0 12c0 2.11.55 4.16 1.6 5.97L0 24l6.19-1.62A11.93 11.93 0 0012.02 24C18.66 24 24 18.63 24 12c0-3.2-1.25-6.2-3.48-8.52zM12.02 21.82c-1.82 0-3.6-.49-5.15-1.42l-.37-.22-3.67.96.98-3.57-.24-.37A9.77 9.77 0 012.2 12c0-5.43 4.41-9.82 9.82-9.82 2.62 0 5.08 1.02 6.94 2.88A9.75 9.75 0 0121.82 12c0 5.41-4.39 9.82-9.8 9.82zm5.39-7.38c-.3-.15-1.78-.88-2.06-.98-.27-.1-.47-.15-.67.15-.2.3-.77.98-.94 1.18-.17.2-.35.22-.65.07-.3-.15-1.28-.47-2.43-1.5-.9-.8-1.5-1.78-1.67-2.08-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.57-.48-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.05 1.02-1.05 2.5 0 1.47 1.08 2.9 1.23 3.1.15.2 2.13 3.25 5.17 4.56.72.31 1.28.5 1.72.64.72.23 1.37.2 1.88.12.57-.08 1.78-.73 2.03-1.44.25-.7.25-1.3.17-1.44-.07-.13-.27-.2-.57-.35z" />
+    </svg>
+    <span className="text-sm font-medium">Chat</span>
+  </a>
+</section>
       <footer className="bg-[#16202b] px-6 py-10 text-white/55">
         <div className="mx-auto grid max-w-7xl gap-10 md:grid-cols-4">
           <div>
@@ -564,7 +554,7 @@ export default function CrewPage() {
               </a>
             </div>
           </div>
-          
+
         </div>
 
         <div className="mx-auto mt-10 max-w-7xl border-t border-white/10 pt-6 text-sm text-white/40">
