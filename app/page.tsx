@@ -140,7 +140,7 @@ const HERO_MEDIA: HeroMedia[] = [
 ];
 const IMAGES = [
   "/dive.jpg",
-  "/sharktouch.jpg",
+  "/sharktouch.JPG",
   "/loneshark.webp",
   "/manta.webp",
   "/shipwreakdiving.jpg",
