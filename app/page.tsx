@@ -143,7 +143,7 @@ const IMAGES = [
   "/sharktouch.JPG",
   "/loneshark.webp",
   "/manta.webp",
-  "/shipwreakdiving.jpg",
+  "/shipwreakdiving.JPG",
 ];
 
 const GALLERY_IMAGES = [
