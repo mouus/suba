@@ -346,7 +346,7 @@ function PolicyItem({ title, content }: { title: string; content: string }) {
 
 
 export default function Page() {
-    const [expandedIndex, setExpandedIndex] = useState(null);
+    const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
   const [activeCourse, setActiveCourse] = useState(COURSESS[0]);
   const [heroIndex, setHeroIndex] = useState(0);
   const activeHero = HERO_MEDIA[heroIndex];
