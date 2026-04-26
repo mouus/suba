@@ -5,6 +5,7 @@ import { Clock3, BadgeCheck, ChevronDown } from "lucide-react";
 import React, { useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
+  ChevronUp,
   ArrowRight,
   ChevronRight,
   FileText,
@@ -139,10 +140,10 @@ const HERO_MEDIA: HeroMedia[] = [
 ];
 const IMAGES = [
   "/dive.jpg",
-  "/whaleimg.jpg",
+  "/sharktouch.jpg",
   "/loneshark.webp",
   "/manta.webp",
-  "shark-4.webp",
+  "/shipwreakdiving.jpg",
 ];
 
 const GALLERY_IMAGES = [
@@ -160,27 +161,32 @@ const GALLERY_IMAGES = [
 const EXPERIENCES = [
   {
     title: "Scuba Diving",
-    text: "Experience world-class diving with a range of scuba options for all levels in Fuvahmulah’s unique waters.",
+    text: "Experience world-class diving with a range of options for all levels in Fuvahmulah’s unique waters.",
+    details: "Fuvahmulah is a one-island atoll, meaning it drops vertically into the deep ocean. This creates a 'shark island' effect where you can encounter seven types of rare sharks in a single day. From the elusive Thresher sharks at early dawn to whale sharks and hammerheads, our guided scuba tours provide a front-row seat to the most biodiverse waters in the Maldives.",
     price: "From $62",
   },
   {
     title: "Free Diving",
     text: "Connect with marine life in a more natural way through guided free diving adventures.",
+    details: "Located in the heart of the Indian Ocean, Fuvahmulah is a world-class destination for freediving, known for its deep blue waters, rich pelagic marine life, and unique oceanic conditions. We offer guided experiences, training, and encounters for both beginners and pros. From depth training to exploring vibrant reefs and encountering iconic species like tiger sharks and oceanic manta rays, every session is designed with safety and respect for the ocean.",
     price: "$150",
   },
   {
     title: "Tiger Shark Diving",
     text: "Dive with magnificent tiger sharks in their natural habitat with expert local guides.",
+    details: "Welcome to 'Tiger Zoo,' the world's most famous and reliable site for Tiger Shark encounters. Unlike other locations, tiger sharks are seen here year-round in their natural habitat. Our dive masters follow strict safety protocols to ensure a respectful and exhilarating experience, allowing you to observe these majestic apex predators in crystal clear visibility.",
     price: "From $97",
   },
   {
     title: "Addu Manta Point",
     text: "Encounter graceful manta rays at one of the most memorable dive experiences available.",
+    details: "Take a journey to the nearby Addu Atoll to witness the giant Oceanic Manta Rays. These magnificent creatures, with wingspans reaching up to 7 meters, congregate at cleaning stations in the channel. It is a spiritual experience to watch them glide effortlessly through the currents. This trip includes a boat transfer and professional photography opportunities.",
     price: "$150 per person",
   },
   {
     title: "Shipwreck Diving",
     text: "Explore fascinating underwater wrecks rich with marine life and history.",
+    details: "Dive into history by exploring the famous shipwrecks of the Southern Atolls, including the 'British Loyalty'—the largest wreck in the Maldives. These sites have become vibrant artificial reefs, encrusted in soft corals and home to massive schools of snapper, turtles, and macro life hiding in the steel structures.",
     price: "$85",
   },
 ];
@@ -340,6 +346,7 @@ function PolicyItem({ title, content }: { title: string; content: string }) {
 
 
 export default function Page() {
+    const [expandedIndex, setExpandedIndex] = useState(null);
   const [activeCourse, setActiveCourse] = useState(COURSESS[0]);
   const [heroIndex, setHeroIndex] = useState(0);
   const activeHero = HERO_MEDIA[heroIndex];
@@ -482,51 +489,87 @@ export default function Page() {
           </p>
         </div>
       </section>
-      <section id="experiences" className="mx-auto max-w-7xl px-6 py-24">
-        <div className="mb-12 flex items-end justify-between gap-6">
-          <div>
-            <p className="text-sm uppercase tracking-[0.25em] text-[#0f766e]">
-              Diving Experiences
-            </p>
-            <h2 className="mt-4 text-4xl font-light md:text-5xl">
-              Ocean experiences
-            </h2>
-          </div>
-
-          <a href="#contact" className="hidden items-center gap-2 text-sm md:flex">
-            Plan your trip <ArrowRight className="h-4 w-4" />
-          </a>
+    <section id="experiences" className="mx-auto max-w-7xl px-6 py-24">
+      {/* Header */}
+      <div className="mb-12 flex items-end justify-between gap-6">
+        <div>
+          <p className="text-sm font-bold uppercase tracking-[0.25em] text-[#0f766e]">
+            Unforgettable Adventures
+          </p>
+          <h2 className="mt-4 text-4xl font-light md:text-5xl text-[#16202b]">
+            Ocean experiences
+          </h2>
         </div>
+        <a href="#contact" className="hidden items-center gap-2 text-sm font-semibold text-[#0f766e] hover:opacity-70 md:flex">
+          Plan your trip <ArrowRight className="h-4 w-4" />
+        </a>
+      </div>
 
-        <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-          {EXPERIENCES.map((item, index) => (
+      {/* Grid */}
+      <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-3">
+        {EXPERIENCES.map((item, index) => {
+          const isExpanded = expandedIndex === index;
+          
+          return (
             <div
               key={item.title}
-              className="overflow-hidden rounded-[2rem] bg-[#fcfaf6] shadow-sm"
+              className="flex flex-col overflow-hidden rounded-[2.5rem] bg-[#fcfaf6] shadow-sm transition-all duration-300 hover:shadow-md border border-[#16202b]/5"
             >
               {/* Image */}
-              <img
-                src={`${IMAGES[index % IMAGES.length]}?auto=format&fit=crop&w=800&q=80`}
-                alt={item.title}
-                className="h-52 w-full object-cover"
-              />
+              <div className="relative h-60 w-full overflow-hidden">
+                <img
+                  src={`${IMAGES[index % IMAGES.length]}?auto=format&fit=crop&w=800&q=80`}
+                  alt={item.title}
+                  className="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
+                />
+                <div className="absolute top-5 right-5 rounded-full bg-white/90 px-4 py-1.5 text-xs font-bold text-[#0f766e] backdrop-blur-sm">
+                  {item.price}
+                </div>
+              </div>
 
               {/* Content */}
-              <div className="p-8">
-                <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-full bg-[#e8f5f2]">
-                  <Waves className="h-5 w-5 text-[#0f766e]" />
+              <div className="flex flex-1 flex-col p-8">
+                <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-2xl bg-[#e8f5f2] text-[#0f766e]">
+                  <Waves className="h-6 w-6" />
                 </div>
 
-                <h3 className="text-2xl font-medium">{item.title}</h3>
-                <p className="mt-4 text-sm leading-7 text-[#667085]">{item.text}</p>
-                <p className="mt-6 text-sm font-semibold text-[#0f766e]">
-                  {item.price}
+                <h3 className="text-2xl font-semibold text-[#16202b]">{item.title}</h3>
+                <p className="mt-4 text-sm leading-7 text-[#667085]">
+                  {item.text}
                 </p>
+
+                {/* Detailed Text (Expandable) */}
+                <div className={`overflow-hidden transition-all duration-500 ease-in-out ${isExpanded ? 'mt-6 max-h-[500px] opacity-100' : 'max-h-0 opacity-0'}`}>
+                   <div className="border-t border-[#0f766e]/10 pt-4">
+                      <p className="text-sm leading-relaxed text-[#667085] italic">
+                        {item.details}
+                      </p>
+                   </div>
+                </div>
+
+                {/* Footer of Card */}
+                <div className="mt-auto pt-8 flex items-center justify-between">
+                  <button 
+                    onClick={() => setExpandedIndex(isExpanded ? null : index)}
+                    className="flex items-center gap-1 text-[11px] font-bold uppercase tracking-widest text-[#0f766e] hover:text-[#16202b] transition-colors"
+                  >
+                    {isExpanded ? (
+                      <>Read Less <ChevronUp className="h-4 w-4" /></>
+                    ) : (
+                      <>Read More <ChevronDown className="h-4 w-4" /></>
+                    )}
+                  </button>
+                  
+                  <button className="flex h-10 w-10 items-center justify-center rounded-full bg-[#16202b] text-white transition-transform hover:scale-110 active:scale-95">
+                    <ArrowRight className="h-4 w-4" />
+                  </button>
+                </div>
               </div>
             </div>
-          ))}
-        </div>
-      </section>
+          );
+        })}
+      </div>
+    </section>
       <section id="courses" className="bg-[#fcfaf6] py-24">
         <div className="mx-auto max-w-7xl px-6">
           <div className="text-center">
@@ -629,27 +672,35 @@ export default function Page() {
           </div>
         </div>
       </section>
+<section id="gallery" className="mx-auto max-w-7xl px-6 py-24">
+  <div className="mb-12">
+    <p className="text-sm uppercase tracking-[0.25em] text-[#0f766e]">
+      Dive Site Gallery
+    </p>
+    <h2 className="mt-4 text-4xl font-light md:text-5xl">
+      A glimpse into Fuvahmulah
+    </h2>
+  </div>
 
-      <section id="gallery" className="mx-auto max-w-7xl px-6 py-24">
-        <div className="mb-12">
-          <p className="text-sm uppercase tracking-[0.25em] text-[#0f766e]">
-            Dive Site Gallery
-          </p>
-          <h2 className="mt-4 text-4xl font-light md:text-5xl">
-            A glimpse into Fuvahmulah
-          </h2>
-        </div>
+  <div className="grid grid-cols-2 gap-4 md:grid-cols-3">
+    {GALLERY_IMAGES.map((image, i) => {
+      // Check if this is the last image and if the total count is odd
+      const isLastAndOdd = i === GALLERY_IMAGES.length - 1 && GALLERY_IMAGES.length % 2 !== 0;
 
-        <div className="grid grid-cols-2 gap-4 md:grid-cols-3">
-          {GALLERY_IMAGES.map((image, i) => (
-            <div
-              key={i}
-              className="aspect-[4/5] rounded-[2rem] bg-cover bg-center"
-              style={{ backgroundImage: `url(${image})` }}
-            />
-          ))}
-        </div>
-      </section>
+      return (
+        <div
+          key={i}
+          className={`aspect-[4/5] rounded-[2rem] bg-cover bg-center transition-transform hover:scale-[1.02] ${
+            isLastAndOdd 
+              ? "col-span-2 w-1/2 justify-self-center md:col-span-1 md:w-full" 
+              : ""
+          }`}
+          style={{ backgroundImage: `url(${image})` }}
+        />
+      );
+    })}
+  </div>
+</section>
 
       <section id="policies" className="bg-[#fcfaf6] py-24">
         <div className="mx-auto max-w-5xl px-6">
@@ -916,74 +967,120 @@ export default function Page() {
   <span className="text-sm font-medium">Chat</span>
 </a>
       </section>
-
-      <footer className="bg-[#16202b] px-6 py-10 text-white/55">
-        <div className="mx-auto grid max-w-7xl gap-10 md:grid-cols-4">
+<footer className="bg-[#16202b] px-6 py-12 text-white/55">
+  <div className="mx-auto grid max-w-7xl gap-10 md:grid-cols-4">
+    {/* Brand Section */}
+    <div className="flex flex-col gap-6">
+      <div>
+        <div className="flex items-center gap-3">
+          <img
+            src={LOGO}
+            alt="Scubachannel logo"
+            className="h-12 w-12 rounded-full object-cover border border-white/10"
+          />
           <div>
-            <div className="flex items-center gap-3">
-              <img
-                src={LOGO}
-                alt="Scubachannel logo"
-                className="h-11 w-11 rounded-full object-cover"
-              />
-              <div>
-                <p className="text-sm font-semibold tracking-[0.2em] text-white">
-                  SCUBACHANNEL
-                </p>
-                <p className="text-[10px] tracking-[0.25em] text-white/50">
-                  FUVAHMULAH
-                </p>
-              </div>
-            </div>
-            <p className="mt-4 max-w-sm text-sm leading-7 text-white/55">
-              Your premier diving center in Fuvahmulah, Maldives, offering
-              unforgettable underwater experiences and professional PADI courses.
+            <p className="text-sm font-bold tracking-[0.2em] text-white">
+              SCUBACHANNEL
+            </p>
+            <p className="text-[10px] tracking-[0.25em] text-cyan-500/80 font-medium">
+              FUVAHMULAH
             </p>
           </div>
-
-          <div>
-            <p className="text-sm font-medium text-white">Quick Links</p>
-            <div className="mt-4 space-y-3 text-sm">
-              {LINKS.map((item) => (
-                <a key={item.label} href={item.href} className="block hover:text-white">
-                  {item.label}
-                </a>
-              ))}
-            </div>
-          </div>
-
-          <div>
-            <p className="text-sm font-medium text-white">Courses</p>
-            <div className="mt-4 space-y-3 text-sm">
-              {COURSES.map((item) => (
-                <a key={item.title} href="#courses" className="block hover:text-white">
-                  {item.title}
-                </a>
-              ))}
-            </div>
-          </div>
-
-          <div>
-            <p className="text-sm font-medium text-white">Contact Info</p>
-            <div className="mt-4 space-y-3 text-sm">
-              <p>Fuvahmulah Island, Maldives</p>
-              <a href="tel:+9607930760" className="block hover:text-white">
-                +960 7930760
-              </a>
-              <a
-                href="mailto:sales@scubachannelfuvahmulah.com"
-                className="block hover:text-white"
-              >
-                sales@scubachannelfuvahmulah.com
-              </a>
-            </div>
-          </div>
         </div>
+        <p className="mt-4 max-w-sm text-sm leading-relaxed text-white/50">
+          Your premier diving center in Fuvahmulah, Maldives, offering
+          unforgettable underwater experiences and professional PADI courses.
+        </p>
+      </div>
 
-        <div className="mx-auto mt-10 max-w-7xl border-t border-white/10 pt-6 text-sm text-white/40">
-          © 2026 Southern Channel Pvt Ltd. All rights reserved.
+      {/* Partner Logos Integrated Here */}
+      <div className="flex items-center gap-5 border-t border-white/5 pt-6">
+        <img 
+          src="/padi.webp" 
+          alt="PADI" 
+          className="h-6 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity brightness-110" 
+        />
+        <img 
+          src="/dan.webp" 
+          alt="DAN" 
+          className="h-5 w-auto object-contain opacity-60 hover:opacity-100 transition-opacity" 
+        />
+        <img 
+          src="/scubapro.png" 
+          alt="Scubapro" 
+          className="h-4 w-auto object-contain opacity-50 hover:opacity-100 transition-opacity grayscale invert" 
+        />
+      </div>
+    </div>
+
+    {/* Quick Links */}
+    <div>
+      <p className="text-sm font-semibold uppercase tracking-wider text-white">Quick Links</p>
+      <div className="mt-6 space-y-3 text-sm font-light">
+        {LINKS.map((item) => (
+          <a 
+            key={item.label} 
+            href={item.href} 
+            className="block transition-colors hover:text-cyan-400"
+          >
+            {item.label}
+          </a>
+        ))}
+      </div>
+    </div>
+
+    {/* Courses */}
+    <div>
+      <p className="text-sm font-semibold uppercase tracking-wider text-white">Courses</p>
+      <div className="mt-6 space-y-3 text-sm font-light">
+        {COURSES.slice(0, 5).map((item) => (
+          <a 
+            key={item.title} 
+            href="#courses" 
+            className="block transition-colors hover:text-cyan-400"
+          >
+            {item.title}
+          </a>
+        ))}
+      </div>
+    </div>
+
+    {/* Contact Info */}
+    <div>
+      <p className="text-sm font-semibold uppercase tracking-wider text-white">Contact Info</p>
+      <div className="mt-6 space-y-4 text-sm font-light">
+        <div className="flex items-start gap-3">
+          <span className="text-white/30 italic text-xs">Add:</span>
+          <p>Fuvahmulah Island, Maldives</p>
         </div>
-      </footer>
+        <div className="flex items-start gap-3">
+          <span className="text-white/30 italic text-xs">Tel:</span>
+          <a href="tel:+9607930760" className="hover:text-cyan-400 transition-colors">
+            +960 7930760
+          </a>
+        </div>
+        <div className="flex items-start gap-3">
+          <span className="text-white/30 italic text-xs">Mail:</span>
+          <a
+            href="mailto:sales@scubachannelfuvahmulah.com"
+            className="break-all hover:text-cyan-400 transition-colors"
+          >
+            sales@scubachannelfuvahmulah.com
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {/* Bottom Bar */}
+  <div className="mx-auto mt-16 max-w-7xl border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-[12px] tracking-wide text-white/30">
+    <p>© 2026 Southern Channel Pvt Ltd. All rights reserved.</p>
+    <div className="flex gap-6">
+      <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
+      <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
+    </div>
+  </div>
+</footer>
     </div>
   );
 }

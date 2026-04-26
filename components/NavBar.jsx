@@ -29,7 +29,6 @@ export default function NavBar() {
         { label: "Guest Houses", href: "/hotels/guest-houses" },
       ],
     },
-    { label: "Our Crew", href: "/our-crew" },
     { label: "Transfer", href: "/transfer" },
     { label: "About Us", href: "/about" },
     { label: "Contact", href: "/contact" },
@@ -90,11 +89,11 @@ export default function NavBar() {
           {/* RIGHT SECTION: CERTS + BOOK NOW */}
           <div className="flex items-center gap-4 sm:gap-6">
             {/* Unified Certifications Bar (Responsive) */}
-            <div className="flex items-center gap-3 sm:gap-5 border-l border-white/10 pl-4 sm:pl-6 py-1">
+            {/* <div className="flex items-center gap-3 sm:gap-5 border-l border-white/10 pl-4 sm:pl-6 py-1">
               <img src="/padi.webp" alt="PADI" className="h-5 sm:h-7 w-auto object-contain brightness-110" />
               <img src="/dan.webp" alt="DAN" className="h-4 sm:h-6 w-auto object-contain" />
               <img src="/scubapro.png" alt="Scubapro" className="h-3 sm:h-5 w-auto object-contain  opacity-80" />
-            </div>
+            </div> */}
 
             <a href="/contact" className="hidden rounded-full bg-white px-6 py-2.5 text-sm font-bold text-[#1f2a37] lg:block hover:bg-[#0f766e] hover:text-white transition-all transform active:scale-95">
               Book Now

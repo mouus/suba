@@ -85,7 +85,7 @@ export default function Page() {
       <section className="relative min-h-[70vh] flex items-center">
         <div
           className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: "url('/fvm-3.JPG')" }}
+          style={{ backgroundImage: "url('/guestoutside.jpg')" }}
         />
         <div className="absolute inset-0 bg-black/50" />
 
@@ -119,7 +119,7 @@ export default function Page() {
             </p>
           </div>
           <div className="grid grid-cols-2 gap-4">
-             <img src="/guesthouse2.jpg" alt="Exterior" className="rounded-2xl w-full h-64 object-cover shadow-md" />
+             <img src="/guesthousedisplay.jpg" alt="Exterior" className="rounded-2xl w-full h-64 object-cover shadow-md" />
              <img src="/guesthouseroom.jpg" alt="Room" className="rounded-2xl w-full h-64 object-cover shadow-md" />
           </div>
         </div>
